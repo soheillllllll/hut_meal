@@ -1,0 +1,82 @@
+{% extends 'base/base.html' %}
+{% block contents %}
+    {% load static %}
+
+
+    <!--// SubHeader \\-->
+    <div class="hotmeal-subheader">
+        <span class="hotmeal-subheader-transparent"></span>
+        <div class="hotmeal-subheader-text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>Register</span>
+                        <h1>Register</h1>
+                        <p>Sed vulputate elementum aliquam. Nunc vel efficitur ante. Ut gravida nulla id ornare
+                            sodales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hotmeal-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="index-2.html">Homepage</a></li>
+                            <li class="active">Reservation Table</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader \\-->
+
+    <!--// Main Content \\-->
+    <div class="hotmeal-main-content">
+
+        <!--// Main Section \\-->
+        <div class="hotmeal-main-section">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="hotmeal-reserve-table hotmeal-reservation-wrap">
+                            <div class="hotmeal-fancy-title">
+                                <span>Reservation</span>
+                                {% if request.user.is_authenticated %}
+                                <h2>Edit account</h2>
+                                {% else %}
+                                    <h2>Register user/ <a style="color: #4ac1f7"
+                                                          href="{% url 'profile:register_page' %}">login</a></h2>
+                                {% endif %}
+                                <img src="{% static 'images/fancy-title-img.png' %}" alt="">
+                            </div>
+                            <form action="{% url 'profile:register_page' %}" method="post">
+                                {% csrf_token %}
+                                <ul>
+                                    <li>{{ register_form.username }}</li>
+                                    <li>{{ register_form.first_name }}</li>
+                                    <li>{{ register_form.last_name }}</li>
+                                    <li>{{ register_form.email }}</li>
+                                    <li>{{ register_form.password }}</li>
+                                    <li>{{ register_form.password2 }}</li>
+                                    <li>{{ register_form.phone }}</li>
+                                    <li>{{ register_form.company }}</li>
+                                    <li>{{ register_form.address }}</li>
+                                    <li><label class="submit"><input type="submit"
+                                                                     value="Find Table"><span></span></label></li>
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+    </div>
+    <!--// Main Content \\-->
+
+{% endblock %}

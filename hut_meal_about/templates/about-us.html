@@ -1,0 +1,292 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block contents %}
+
+    <!--// SubHeader \\-->
+    <div class="hotmeal-subheader">
+        <span class="hotmeal-subheader-transparent"></span>
+        <div class="hotmeal-subheader-text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>About</span>
+                        <h1>About Us</h1>
+                        <p>Sed vulputate elementum aliquam. Nunc vel efficitur ante. Ut gravida nulla id ornare
+                            sodales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hotmeal-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="index-2.html">Homepage</a></li>
+                            <li class="active">About Us</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader \\-->
+
+    <!--// Main Content \\-->
+    <div class="hotmeal-main-content">
+
+        <!--// Main Section \\-->
+        <div class="hotmeal-main-section hotmeal-aboutus-full">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="hotmeal-about-text">
+                            <div class="hotmeal-fancy-title">
+                                <span>Our History</span>
+                                <h2>Welcome To Hot Meal</h2>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac egestas velit.
+                                Curabitur pellentesque nisl eu nisl malesuada suscipit. Sed aliquet diam sed mauris
+                                dictum rutrum. Etiam facilisis sit amet purus ac dignissim. Pellentesque ex felis,
+                                fermentum vitae erat vitae, fermentum luctus risus. </p>
+                            <p>Sed vulputate elementum aliquam. Nunc vel efficitur ante. Ut gravida nulla id ornare
+                                sodales. Aenean aliquam mauris purus, eget mollis lectus sagittis sed. Cras varius est
+                                vel massa ultricies.</p>
+                            <h5>Abraham Doe</h5>
+                            <span>Founder</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img class="about-thumb" src="{% static 'extra-images/about-thumb-img.jpg' %}" alt="">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+        <!--// Main Section \\-->
+        <div class="hotmeal-main-section hotmeal-service-providefull">
+            <img src="{% static 'extra-images/service-provide-img1.png' %}" alt="" class="img-one">
+            <img src="{% static 'extra-images/service-provide-img2.png' %}" alt="" class="img-two">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="hotmeal-fancy-title">
+                            <span>Featured Services</span>
+                            <h2>Services We Provide</h2>
+                            <img src="{% static 'images/fancy-title-img.png' %}" alt="">
+                        </div>
+                        <div class="hotmeal-service hotmeal-service-grid">
+                            <ul class="row">
+                                <li class="col-md-4">
+                                    <div class="hotmeal-service-grid-text">
+                                        <i class="icon hotmeal-serve"></i>
+                                        <h5><a href="404.html">Fresh Dishes</a></h5>
+                                        <p>In in hendrerit nibh. Sed mattis nisi nec con gue sempr. Integer feugiat
+                                            purus quism enimn lobortis.</p>
+                                        <span class="btn-shape"></span>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="hotmeal-service-grid-text">
+                                        <i class="icon hotmeal-cutlery-1"></i>
+                                        <h5><a href="404.html">Well Service</a></h5>
+                                        <p>In in hendrerit nibh. Sed mattis nisi nec con gue sempr. Integer feugiat
+                                            purus quism enimn lobortis.</p>
+                                        <span class="btn-shape"></span>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="hotmeal-service-grid-text">
+                                        <i class="icon hotmeal-scooter"></i>
+                                        <h5><a href="404.html">Fast Delivery</a></h5>
+                                        <p>In in hendrerit nibh. Sed mattis nisi nec con gue sempr. Integer feugiat
+                                            purus quism enimn lobortis.</p>
+                                        <span class="btn-shape"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+        <!--// Main Section \\-->
+        <div class="hotmeal-main-section hotmeal-priceplan-full">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="hotmeal-fancy-title">
+                            <span>Featured Plan</span>
+                            <h2>Price Table For This Month</h2>
+                            <img src="{% static 'images/fancy-title-img.png' %}" alt="">
+                        </div>
+                        <div class="hotmeal-price-plan">
+                            <ul>
+                                <li>
+                                    <div class="hotmeal-pricing-text">
+                                        <h2>Basic</h2>
+                                        <h3><small>$</small>20.<span>99</span></h3>
+                                        <div class="hotmeal-price-list">
+                                            <ul>
+                                                <li>Sed vulputate elementum</li>
+                                                <li>Nunc vel efficitur ante</li>
+                                                <li>Ut gravida nulla id orna</li>
+                                                <li>Aenean aliquam mauris</li>
+                                                <li>Cras varius est vel massa</li>
+                                            </ul>
+                                            <a href="404.html" class="hotmeal-learn-btn">Buy Package Now <span
+                                                    class="btn-shape"></span></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="hotmeal-pricing-text">
+                                        <h2>Standerd</h2>
+                                        <h3><small>$</small>49.<span>99</span></h3>
+                                        <div class="hotmeal-price-list">
+                                            <ul>
+                                                <li>Sed vulputate elementum</li>
+                                                <li>Nunc vel efficitur ante</li>
+                                                <li>Ut gravida nulla id orna</li>
+                                                <li>Aenean aliquam mauris</li>
+                                                <li>Cras varius est vel massa</li>
+                                            </ul>
+                                            <a href="404.html" class="hotmeal-learn-btn">Buy Package Now <span
+                                                    class="btn-shape"></span></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="hotmeal-pricing-text">
+                                        <h2>Premium</h2>
+                                        <h3><small>$</small>89.<span>99</span></h3>
+                                        <div class="hotmeal-price-list">
+                                            <ul>
+                                                <li>Sed vulputate elementum</li>
+                                                <li>Nunc vel efficitur ante</li>
+                                                <li>Ut gravida nulla id orna</li>
+                                                <li>Aenean aliquam mauris</li>
+                                                <li>Cras varius est vel massa</li>
+                                            </ul>
+                                            <a href="404.html" class="hotmeal-learn-btn">Buy Package Now <span
+                                                    class="btn-shape"></span></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+        <!--// Main Section \\-->
+        <div class="hotmeal-main-section hotmeal-special-recipiesfull">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="hotmeal-special-recipies">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="hotmeal-recipies-tabs">
+                                        <!-- Nav tabs -->
+                                        <ul class="nav-tabs" role="tablist">
+                                            <li role="presentation" class="active"><a href="#beverage"
+                                                                                      aria-controls="beverage"
+                                                                                      role="tab" data-toggle="tab"><i
+                                                    class="icon hotmeal-cocktail"></i>beverage</a></li>
+                                            <li role="presentation"><a href="#desserts" aria-controls="desserts"
+                                                                       role="tab" data-toggle="tab"><i
+                                                    class="icon hotmeal-cupcake"></i>desserts</a></li>
+                                            <li role="presentation"><a href="#drinks" aria-controls="drinks" role="tab"
+                                                                       data-toggle="tab"><i
+                                                    class="icon hotmeal-food-1"></i>drinks</a></li>
+                                        </ul>
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane active" id="beverage">
+                                                <div class="hotmeal-recipies-text">
+                                                    <p>Fusce pulvinar tortor viverra aliquam semper. Cras in sapien
+                                                        ultrices, mol estie sapien ac, sodales leo. Aenean ultricies
+                                                        tellus eget sem viverra, eu venenatis ipsum congue.</p>
+                                                    <ul class="hotmeal-recipies-list">
+                                                        <li>Sed vulputate elementum</li>
+                                                        <li>Cras varius est vel massa</li>
+                                                        <li>Nunc vel efficitur ante</li>
+                                                        <li>ac rutrum urna hendrerit</li>
+                                                        <li>Ut gravida nulla id ornare</li>
+                                                        <li>Donec eu porta velit. Nam at</li>
+                                                        <li>Aenean aliquam mauris pu</li>
+                                                        <li>Curabitur sit amet sapien</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hotmeal-recipies-img">
+                                                    <img src="{% static 'extra-images/recipie-img3.png' %}" alt="">
+                                                    <img src="{% static 'extra-images/recipie-img4.png' %}" alt="">
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="desserts">
+                                                <div class="hotmeal-recipies-text">
+                                                    <p>Fusce pulvinar tortor viverra aliquam semper. Cras in sapien
+                                                        ultrices, mol estie sapien ac, sodales leo. Aenean ultricies
+                                                        tellus eget sem viverra, eu venenatis ipsum congue.</p>
+                                                    <ul class="hotmeal-recipies-list">
+                                                        <li>Ut gravida nulla id ornare</li>
+                                                        <li>Donec eu porta velit. Nam at</li>
+                                                        <li>Aenean aliquam mauris pu</li>
+                                                        <li>Curabitur sit amet sapien</li>
+                                                        <li>Sed vulputate elementum</li>
+                                                        <li>Cras varius est vel massa</li>
+                                                        <li>Nunc vel efficitur ante</li>
+                                                        <li>ac rutrum urna hendrerit</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hotmeal-recipies-img">
+                                                    <img src="{% static 'extra-images/recipie-img1.png' %}" alt="">
+                                                    <img src="{% static 'extra-images/recipie-img2.png' %}" alt="">
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="drinks">
+                                                <div class="hotmeal-recipies-text">
+                                                    <p>Fusce pulvinar tortor viverra aliquam semper. Cras in sapien
+                                                        ultrices, mol estie sapien ac, sodales leo. Aenean ultricies
+                                                        tellus eget sem viverra, eu venenatis ipsum congue.</p>
+                                                    <ul class="hotmeal-recipies-list">
+                                                        <li>ac rutrum urna hendrerit</li>
+                                                        <li>Ut gravida nulla id ornare</li>
+                                                        <li>Donec eu porta velit. Nam at</li>
+                                                        <li>Sed vulputate elementum</li>
+                                                        <li>Cras varius est vel massa</li>
+                                                        <li>Nunc vel efficitur ante</li>
+                                                        <li>Aenean aliquam mauris pu</li>
+                                                        <li>Curabitur sit amet sapien</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="hotmeal-recipies-img">
+                                                    <img src="{% static 'extra-images/recipie-img2.png' %}" alt="">
+                                                    <img src="{% static 'extra-images/recipie-img1.png' %}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+    </div>
+    <!--// Main Content \\-->
+
+{% endblock %}

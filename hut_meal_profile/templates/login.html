@@ -1,0 +1,81 @@
+{% extends 'base/base.html' %}
+{% block contents %}
+    {% load static %}
+
+    <!--// SubHeader \\-->
+    <div class="hotmeal-subheader">
+        <span class="hotmeal-subheader-transparent"></span>
+        <div class="hotmeal-subheader-text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>Login</span>
+                        <h1>Login</h1>
+                        <p>Sed vulputate elementum aliquam. Nunc vel efficitur ante. Ut gravida nulla id ornare
+                            sodales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hotmeal-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="index-2.html">Homepage</a></li>
+                            <li class="active">Login</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader \\-->
+
+    <!--// Main Content \\-->
+    <div class="hotmeal-main-content">
+
+        <!--// Main Section \\-->
+        <div class="hotmeal-main-section">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="hotmeal-reserve-table hotmeal-reservation-wrap">
+                            <div class="hotmeal-fancy-title">
+                                <span>Login</span>
+                                <h2>Login user/ <a style="color: #4ac1f7" href="{% url 'profile:register_page' %}">register</a></h2>
+                                <img src="images/fancy-title-img.png" alt="">
+                            </div>
+                            <form action="{% url 'profile:login_page' %}" method="post">
+                                {% csrf_token %}
+                                <ul>
+                                    <li>
+                                        {{ login_form.username }}
+{#                                        <input type="text" value="Name*"#}
+{#                                               onblur="if(this.value == '') { this.value ='Name*'; }"#}
+{#                                               onfocus="if(this.value =='Name*') { this.value = ''; }">#}
+                                    </li>
+                                    <li>
+                                        {{ login_form.password }}
+{#                                        <input type="text" value="password*"#}
+{#                                               onblur="if(this.value == '') { this.value ='password*'; }"#}
+{#                                               onfocus="if(this.value =='password*') { this.value = ''; }">#}
+                                    </li>
+                                    <li><label class="submit"><input type="submit"
+                                                                     value="Find Table"><span></span></label></li>
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+    </div>
+    <!--// Main Content \\-->
+
+{% endblock %}

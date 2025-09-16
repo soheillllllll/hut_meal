@@ -1,0 +1,123 @@
+{% extends 'base/base.html' %}
+{% block contents %}
+    {% load static %}
+
+    <!--// SubHeader \\-->
+
+    <div class="hotmeal-subheader">
+        <span class="hotmeal-subheader-transparent"></span>
+        <div class="hotmeal-subheader-text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>Cart</span>
+                        <h1>Cart user</h1>
+                        <p>Sed vulputate elementum aliquam. Nunc vel efficitur ante. Ut gravida nulla id ornare
+                            sodales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hotmeal-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="index-2.html">Homepage</a></li>
+                            <li class="active">cart</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader \\-->
+
+    <!--// Main Content \\-->
+    <div class="hotmeal-main-content">
+
+        <!--// Main Section \\-->
+        <div class="hotmeal-main-section">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="hotmeal-gallery-filterable">
+                            {#                            <ul class="filters-button-group">#}
+                            {#                                <li><a data-filter="*" class="is-checked">All</a></li>#}
+                            {#                                <li><a data-filter="*" class="is-checked">All</a></li>#}
+                            {#                                <li><a data-filter="*" class="is-checked">All</a></li>#}
+                            {#                                <li><a data-filter="*" class="is-checked">All</a></li>#}
+                            {#                                <li><a data-filter="*" class="is-checked">All</a></li>#}
+                            {#                                <li><a data-filter="*" class="is-checked">All</a></li>#}
+                            {#                            </ul>#}
+
+
+                            <table class="shop-cart-table">
+                                <thead>
+                                <tr>
+                                    <th class="product-thumbnail ">Image</th>
+                                    <th class="product-name ">Product Name</th>
+                                    <th class="product-price ">Unit Price</th>
+                                    <th class="product-quantity">Quantity</th>
+                                    <th class="product-subtotal ">Total</th>
+                                    <th class="product-remove">Remove</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for detail in details %}
+                                    <tr class="cart_item">
+                                        <td class="item-img"><a href=""><img
+                                                src=""
+                                                alt="Product tilte is here "> </a></td>
+                                        <td class="item-title"><a
+                                                href="#">title</a>
+                                        </td>
+                                        <td class="item-price">555</td>
+                                        <td class="item-qty">
+                                            <div class="cart-quantity">
+                                                <div class="product-qty">
+                                                    <div class="cart-quantity">
+                                                        <div class="cart-plus-minus">
+                                                            <div class="dec qtybutton"><a
+                                                                    href=""
+                                                                    class="dec qtybutton">-</a>
+                                                            </div>
+                                                            <input value="5"
+                                                                   name="qtybutton"
+                                                                   class="cart-plus-minus-box"
+                                                                   type="text">
+                                                            <div class="inc qtybutton"><a
+                                                                    href=""
+                                                                    class="inc qtybutton">+</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="total-price">
+                                            <strong>{{ detail.product_sum_in_cart }}</strong>
+                                        </td>
+                                        <td class="remove-item"><a
+                                                href="/remove-cart-item/{{ detail.product.id }}"><i
+                                                class="fa fa-trash-o"></i></a></td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+    </div>
+    <!--// Main Content \\-->
+
+{% endblock %}

@@ -36,7 +36,7 @@
         <div class="hotmeal-main-header">
             <div class="container">
                 <div class="row">
-                    <aside class="col-md-2"><a href="index-2.html" class="logo"><img
+                    <aside class="col-md-2"><a href="/" class="logo"><img
                             src="{% static 'images/logo.png' %}" alt=""></a>
                     </aside>
                     <aside class="col-md-10">
@@ -44,7 +44,7 @@
                         <a href="#menu" class="menu-link active"><span></span></a>
                         <nav id="menu" class="menu navbar navbar-default">
                             <ul class="level-1 navbar-nav">
-                                <li class="active"><a href="index-2.html">Home</a></li>
+                                <li class="active"><a href="/">Home</a></li>
                                 <li><a href="menu.html">Menu</a></li>
                                 <li><a href="#">Blogs</a><span class="has-subnav"><i
                                         class="fa fa-angle-down"></i></span>
@@ -120,7 +120,15 @@
                                         class="fa fa-angle-down"></i></span>
                                     <ul class="sub-menu level-2">
                                         <li><a href="reservations.html">Reservations</a></li>
-                                        <li><a href="about-us.html">About Us</a></li>
+                                        {% if request.user.is_authenticated %}
+                                            <li><a href="{% url 'profile:log_out_page' %}">Log out</a></li>
+                                        {% else %}
+                                            <li><a href="{% url 'profile:register_page' %}">Register</a></li>
+                                            <li><a href="{% url 'profile:login_page' %}">login</a></li>
+                                        {% endif %}
+                                        <li><a href="{% url 'profile:account_main_page' %}">account</a></li>
+                                        <li><a href="{% url 'order:cart_page' %}">cart</a></li>
+                                        <li><a href="{% url 'about_us' %}">About Us</a></li>
                                         <li><a href="priceplan.html">Price plan</a></li>
                                         <li><a href="gallery.html">Gallery</a></li>
                                         <li><a href="gallery-four-col.html">Gallery Four Col</a></li>
@@ -128,7 +136,8 @@
                                         <li><a href="faq.html">FAQ</a></li>
                                         <li><a href="404.html">Error Page</a></li>
                                         <li><a href="search-result.html">Search Result</a></li>
-                                        <li><a href="contact-us.html">Contact Us</a></li>
+                                        <li><a href="{% url 'contact:contact_us' %}">Contact Us</a></li>
+                                        <li><a href="{% url 'contact:contact_us' %}">Contact Us</a></li>
                                     </ul>
                                 </li>
                             </ul>

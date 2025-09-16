@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_render_partial',
+    'hut_meal_contact',
+    'hut_meal_about',
+    'hut_meal_profile',
+    'hut_meal_user',
+    'hut_meal_order',
 ]
 
 MIDDLEWARE = [
