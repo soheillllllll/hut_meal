@@ -1,0 +1,20 @@
+<li class="col-md-4">
+    <figure><span>sale</span><a href="{{ product.get_product_detail_url }}"><img src="{{ product.image.url }}"
+                                                                                 alt=""></a>
+        <figcaption>
+            <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span class="btn-shape"></span></a>
+            <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span class="btn-shape"></span></a>
+        </figcaption>
+    </figure>
+    <div class="hotmeal-shop-grid-text">
+        <h2><a href="{{ product.get_product_detail_url }}">{{ product.title }}</a></h2>
+        <div class="star-rating"><span class="star-rating-box" style="width:60%"></span></div>
+        <small>( 2 Reviews )</small>
+        {% if product.discount.percentage > 0 %}
+            <span> $ {{ product.price2 }}
+                <del> $ {{ product.price }}</del></span>
+        {% else %}
+            <span> $ {{ product.price }}</span>
+        {% endif %}
+    </div>
+</li>

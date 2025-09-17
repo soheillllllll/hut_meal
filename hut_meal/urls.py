@@ -28,6 +28,7 @@ urlpatterns = [
     path('', home_page),
     path('header/', header, name='header'),
     path('footer/', footer, name='footer'),
+    path('', include('hut_meal_product.urls', namespace='product')),
     path('', include('hut_meal_profile.urls', namespace='profile')),
     path('', include('hut_meal_order.urls', namespace='order')),
     path('about-us', about_us, name='about_us'),

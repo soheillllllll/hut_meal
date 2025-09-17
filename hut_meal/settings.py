@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'hut_meal_profile',
     'hut_meal_user',
     'hut_meal_order',
+    'hut_meal_product',
 ]
 
 MIDDLEWARE = [
