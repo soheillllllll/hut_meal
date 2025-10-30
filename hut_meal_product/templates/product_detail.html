@@ -62,12 +62,6 @@
                                                  class="hotmeal-images-thumb-layer"><span><img
                                                     src="{{ gallry.image.url }}" alt=""></span></div>
                                         {% endfor %}
-                                        {#                                        <div class="hotmeal-images-thumb-layer"><span><img#}
-                                        {#                                                src="extra-images/shop-detail-img2.jpg" alt=""></span></div>#}
-                                        {#                                        <div class="hotmeal-images-thumb-layer"><span><img#}
-                                        {#                                                src="extra-images/shop-detail-img3.jpg" alt=""></span></div>#}
-                                        {#                                        <div class="hotmeal-images-thumb-layer"><span><img#}
-                                        {#                                                src="extra-images/shop-detail-img4.jpg" alt=""></span></div>#}
                                     </div>
                                     <div class="hotmeal-shop-thumb-list">
                                         <div style="height: 250px;width: 250px"
@@ -79,17 +73,11 @@
                                                     style="width: 150px;height: 150px" src="{{ gallry.image.url }}"
                                                     alt=""></span></div>
                                         {% endfor %}
-                                        {#                                        <div class="hotmeal-images-list-layer"><span><img#}
-                                        {#                                                src="extra-images/shop-detail-list-img2.jpg" alt=""></span></div>#}
-                                        {#                                        <div class="hotmeal-images-list-layer"><span><img#}
-                                        {#                                                src="extra-images/shop-detail-list-img3.jpg" alt=""></span></div>#}
-                                        {#                                        <div class="hotmeal-images-list-layer"><span><img#}
-                                        {#                                                src="extra-images/shop-detail-list-img4.jpg" alt=""></span></div>#}
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="hotmeal-shop-text">
-                                        <p>{{ product.description|truncatechars:250 }}</p>
+                                        <p>{{ product.description|linebreaks }}</p>
                                         <span>$ {{ product.price2 }}</span>
                                         <div class="hotmeal-product-color">
                                             <h6>Flavour:</h6>

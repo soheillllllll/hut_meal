@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul>
-                            <li><a href="index-2.html">Homepage</a></li>
+                            <li><a href="/">Homepage</a></li>
                             <li class="active">About Us</li>
                         </ul>
                     </div>
@@ -44,21 +44,15 @@
                         <div class="hotmeal-about-text">
                             <div class="hotmeal-fancy-title">
                                 <span>Our History</span>
-                                <h2>Welcome To Hot Meal</h2>
+                                <h2>{{ about.title_first }}</h2>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac egestas velit.
-                                Curabitur pellentesque nisl eu nisl malesuada suscipit. Sed aliquet diam sed mauris
-                                dictum rutrum. Etiam facilisis sit amet purus ac dignissim. Pellentesque ex felis,
-                                fermentum vitae erat vitae, fermentum luctus risus. </p>
-                            <p>Sed vulputate elementum aliquam. Nunc vel efficitur ante. Ut gravida nulla id ornare
-                                sodales. Aenean aliquam mauris purus, eget mollis lectus sagittis sed. Cras varius est
-                                vel massa ultricies.</p>
-                            <h5>Abraham Doe</h5>
+                            <p>{{ about.description_first|linebreaks }}</p>
+                            <h5>{{ about.Persons_name }}</h5>
                             <span>Founder</span>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img class="about-thumb" src="{% static 'extra-images/about-thumb-img.jpg' %}" alt="">
+                        <img class="about-thumb" src="{{ about.image.url }}" alt="">
                     </div>
 
                 </div>
@@ -112,77 +106,6 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
-        </div>
-        <!--// Main Section \\-->
-
-        <!--// Main Section \\-->
-        <div class="hotmeal-main-section hotmeal-priceplan-full">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="hotmeal-fancy-title">
-                            <span>Featured Plan</span>
-                            <h2>Price Table For This Month</h2>
-                            <img src="{% static 'images/fancy-title-img.png' %}" alt="">
-                        </div>
-                        <div class="hotmeal-price-plan">
-                            <ul>
-                                <li>
-                                    <div class="hotmeal-pricing-text">
-                                        <h2>Basic</h2>
-                                        <h3><small>$</small>20.<span>99</span></h3>
-                                        <div class="hotmeal-price-list">
-                                            <ul>
-                                                <li>Sed vulputate elementum</li>
-                                                <li>Nunc vel efficitur ante</li>
-                                                <li>Ut gravida nulla id orna</li>
-                                                <li>Aenean aliquam mauris</li>
-                                                <li>Cras varius est vel massa</li>
-                                            </ul>
-                                            <a href="404.html" class="hotmeal-learn-btn">Buy Package Now <span
-                                                    class="btn-shape"></span></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="hotmeal-pricing-text">
-                                        <h2>Standerd</h2>
-                                        <h3><small>$</small>49.<span>99</span></h3>
-                                        <div class="hotmeal-price-list">
-                                            <ul>
-                                                <li>Sed vulputate elementum</li>
-                                                <li>Nunc vel efficitur ante</li>
-                                                <li>Ut gravida nulla id orna</li>
-                                                <li>Aenean aliquam mauris</li>
-                                                <li>Cras varius est vel massa</li>
-                                            </ul>
-                                            <a href="404.html" class="hotmeal-learn-btn">Buy Package Now <span
-                                                    class="btn-shape"></span></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="hotmeal-pricing-text">
-                                        <h2>Premium</h2>
-                                        <h3><small>$</small>89.<span>99</span></h3>
-                                        <div class="hotmeal-price-list">
-                                            <ul>
-                                                <li>Sed vulputate elementum</li>
-                                                <li>Nunc vel efficitur ante</li>
-                                                <li>Ut gravida nulla id orna</li>
-                                                <li>Aenean aliquam mauris</li>
-                                                <li>Cras varius est vel massa</li>
-                                            </ul>
-                                            <a href="404.html" class="hotmeal-learn-btn">Buy Package Now <span
-                                                    class="btn-shape"></span></a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

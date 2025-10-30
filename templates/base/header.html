@@ -82,7 +82,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="{% url 'team:team_list' %}">Team</a><span class="has-subnav"><i class="fa fa-angle-down"></i></span>
+                                <li><a href="{% url 'team:team_list' %}">Team</a><span class="has-subnav"><i
+                                        class="fa fa-angle-down"></i></span>
                                 </li>
                                 <li><a href="#">Pages</a><span class="has-subnav"><i
                                         class="fa fa-angle-down"></i></span>
@@ -112,10 +113,17 @@
                         </nav>
                         <!--// Navigation \\-->
                         <ul class="hotmeal-user-list">
-                            <li><a href="{% url "order:cart_page" %}" class="fa fa-shopping-bag"><span>{{ total_count }}</span></a>
-                                <div class="hotmeal-cart-box"><p>No products in the cart.</p></div>
+                            <li><a href="{% url "order:cart_page" %}"
+                                   class="fa fa-shopping-bag"><span>{{ total_count }}</span></a>
+                                {% if  total_count == 0 %}
+                                    <div class="hotmeal-cart-box"><p>No products in
+                                        the cart.</p></div>
+                                {% else %}
+                                    <div class="hotmeal-cart-box"><p><a href="{% url "order:cart_page" %}"> -> Go to shopping cart page</a></p></div>
+                                {% endif %}
                             </li>
-                            <li><a href="#" class="fa fa-search" data-toggle="modal" data-target="#searchmodal"></a></li>
+                            <li><a href="#" class="fa fa-search" data-toggle="modal" data-target="#searchmodal"></a>
+                            </li>
                         </ul>
                     </aside>
                 </div>
