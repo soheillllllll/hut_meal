@@ -7,4 +7,20 @@
 {% block contents %}{% endblock %}
 
 
+<link rel="stylesheet" href="{% static 'css/eggy.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/progressbar.css' %}"/>
+
+<script type="module">
+    import {Eggy} from '{% static 'script/eggy.js' %}';
+    {% for message in messages %}
+        Eggy({
+            title: 'Information',
+            message: '{{ message }}',
+            type: 'info',
+            duration: 10000,
+        });
+    {% endfor %}
+</script>
+
+
 {% render_partial 'footer' %}

@@ -1,176 +1,29 @@
-{% extends 'base/base.html' %}
-{% block contents %}
-    {% load static %}
-
-    <!--// SubHeader \\-->
-    <div class="hotmeal-subheader">
-        <span class="hotmeal-subheader-transparent"></span>
-        <div class="hotmeal-subheader-text">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <span>Shop</span>
-                        <h1>Shop Grid</h1>
-                        <p>Sed vulputate elementum aliquam. Nunc vel efficitur ante. Ut gravida nulla id ornare
-                            sodales.</p>
-                    </div>
-                </div>
+{% extends 'product_list.html' %}
+{% block page_product_title %}<h1>Shop gird</h1>{% endblock %}
+{% block product_item %}
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <div class="hotmeal-shop hotmeal-shop-grid">
+                <ul class="row">
+                    {% for product in page_obj %}
+                        <li class="col-md-4">
+                            <figure><span>sale</span><a href="{{ product.get_product_detail_url }}"><img
+                                    src="{{ product.image.url }}" alt=""></a>
+                                <figcaption>
+                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
+                                            class="btn-shape"></span></a>
+                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
+                                            class="btn-shape"></span></a>
+                                </figcaption>
+                            </figure>
+                            <div class="hotmeal-shop-grid-text">
+                                <h2><a href="{{ product.get_product_detail_url }}">{{ product.title }}</a></h2>
+                                <div class="star-rating"><span class="star-rating-box" style="width:60%"></span></div>
+                                <small>( 2 Reviews )</small>
+                                <span>$ 25.00 <del>$ 30.00</del></span>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
-        </div>
-        <div class="hotmeal-breadcrumb">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul>
-                            <li><a href="index-2.html">Homepage</a></li>
-                            <li class="active">Shop Grid W/L/Sidebar</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--// SubHeader \\-->
-
-    <!--// Main Content \\-->
-    <div class="hotmeal-main-content">
-
-        <!--// Main Section \\-->
-        <div class="hotmeal-main-section">
-            <div class="container">
-                <div class="row">
-
-                    <!--// Sidebar \\-->
-                    <aside class="col-md-3">
-
-                        <!--// Widget Search \\-->
-                        <div class="widget widget_search">
-                            <form>
-                                <input value="Search Now" onblur="if(this.value == '') { this.value ='Search Now'; }"
-                                       onfocus="if(this.value =='Search Now') { this.value = ''; }" tabindex="0"
-                                       type="text">
-                                <label><input type="submit" value=""></label>
-                            </form>
-                        </div>
-                        <!--// Widget Search \\-->
-
-                        <!--// Widget Popular Post \\-->
-                        <div class="widget widget_popular_post">
-                            <h2 class="widget-heading">Popular Post</h2>
-                            <ul>
-                                <li>
-                                    <h6><a href="blog0-detail.html">Sed vulputate elementum al iquam unc vel</a></h6>
-                                    <time datetime="2008-02-14 20:00">21 August 2017</time>
-                                </li>
-                                <li>
-                                    <h6><a href="blog0-detail.html">Ut gravida nulla id ornare so dales. Aenean
-                                        aliqu</a></h6>
-                                    <time datetime="2008-02-14 20:00">31 December 2017</time>
-                                </li>
-                                <li>
-                                    <h6><a href="blog0-detail.html">Cras varius est vel massa ultr ic ies, ac rutrum
-                                        urn</a></h6>
-                                    <time datetime="2008-02-14 20:00">26 June 2018</time>
-                                </li>
-                                <li>
-                                    <h6><a href="blog0-detail.html">Donec eu porta velit. Nam at urna eu libero
-                                        suscip</a></h6>
-                                    <time datetime="2008-02-14 20:00">22 May 2018</time>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--// Widget Popular Post \\-->
-
-                        <!--// Widget Cetagories \\-->
-                        <div class="widget widget_cetagories">
-                            <h2 class="widget-heading">Cetagories</h2>
-                            <ul>
-                                <li><a href="404.html">Gallery <span>(12)</span></a></li>
-                                <li><a href="404.html">Restaurant <span>(09)</span></a></li>
-                                <li><a href="404.html">Food <span>(17)</span></a></li>
-                                <li><a href="404.html">Pizza <span>(08)</span></a></li>
-                                <li><a href="404.html">Burger <span>(05)</span></a></li>
-                                <li><a href="404.html">Dessert <span>(05)</span></a></li>
-                            </ul>
-                        </div>
-                        <!--// Widget Cetagories \\-->
-
-                        <!--// Widget Best Deals \\-->
-                        <div class="widget widget_deals">
-                            <h2 class="widget-heading">Best Deals</h2>
-                            <ul>
-                                <li>
-                                    <figure><a href="menu.html"><img src="{% static 'extra-images/widget-deal-img1.jpg' %}" alt=""></a>
-                                    </figure>
-                                    <div class="widget-deals-text">
-                                        <h6><a href="menu.html">Large Fajita Pizza</a></h6>
-                                        <span>$ 150.00</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <figure><a href="menu.html"><img src="{% static 'extra-images/widget-deal-img2.jpg' %}" alt=""></a>
-                                    </figure>
-                                    <div class="widget-deals-text">
-                                        <h6><a href="menu.html">Fresh Tomato Juice</a></h6>
-                                        <span>$ 75.00</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <figure><a href="menu.html"><img src="{% static 'extra-images/widget-deal-img3.jpg' %}" alt=""></a>
-                                    </figure>
-                                    <div class="widget-deals-text">
-                                        <h6><a href="menu.html">Chicken Burger</a></h6>
-                                        <span>$ 150.00</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <figure><a href="menu.html"><img src="{% static 'extra-images/widget-deal-img4.jpg' %}" alt=""></a>
-                                    </figure>
-                                    <div class="widget-deals-text">
-                                        <h6><a href="menu.html">Chocolate dessert</a></h6>
-                                        <span>$ 200.00</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--// Widget Best Deals \\-->
-
-                    </aside>
-                    <!--// Sidebar \\-->
-
-                    <div class="col-md-9">
-                        <div class="hotmeal-shop hotmeal-shop-grid">
-                            <ul class="row">
-                                {% for product in page_obj %}
-                                    {% include 'product_item_component.html' with product=product %}
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <!--// Pagination \\-->
-                        <div class="hotmeal-pagination">
-                            <ul class="page-numbers">
-                                <li><a class="previous page-numbers" href="404.html"><span aria-label="Next"><i
-                                        class="fa fa-angle-left"></i></span> <small class="btn-shape"></small></a></li>
-                                <li><span class="page-numbers current">01 <small class="btn-shape"></small></span></li>
-                                <li><a class="page-numbers" href="404.html">02 <small class="btn-shape"></small></a>
-                                </li>
-                                <li><a class="page-numbers" href="404.html">03 <small class="btn-shape"></small></a>
-                                </li>
-                                <li><a class="page-numbers" href="404.html">04 <small class="btn-shape"></small></a>
-                                </li>
-                                <li><a class="next page-numbers" href="404.html"><span aria-label="Next"><i
-                                        class="fa fa-angle-right"></i></span> <small class="btn-shape"></small></a></li>
-                            </ul>
-                        </div>
-                        <!--// Pagination \\-->
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!--// Main Section \\-->
-
-    </div>
-    <!--// Main Content \\-->
-
 {% endblock %}

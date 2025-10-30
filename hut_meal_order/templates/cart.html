@@ -67,28 +67,29 @@
                                 <tbody>
                                 {% for detail in details %}
                                     <tr class="cart_item">
-                                        <td class="item-img"><a href=""><img
-                                                src=""
-                                                alt="Product tilte is here "> </a></td>
+                                        <td class="item-img"><a href=""><img style="width: 180px;height: 180px"
+                                                                             src="{{ detail.product.image.url }}"
+                                                                             alt="Product tilte is here "> </a></td>
                                         <td class="item-title"><a
-                                                href="#">title</a>
+                                                href="#">{{ detail.product.title }}</a>
                                         </td>
-                                        <td class="item-price">555</td>
+                                        <td class="item-price">{{ detail.product.price2 }}</td>
                                         <td class="item-qty">
                                             <div class="cart-quantity">
                                                 <div class="product-qty">
                                                     <div class="cart-quantity">
                                                         <div class="cart-plus-minus">
                                                             <div class="dec qtybutton"><a
-                                                                    href=""
+                                                                    href="/remove-cart-item/{{ detail.product.id }}"
                                                                     class="dec qtybutton">-</a>
                                                             </div>
-                                                            <input value="5"
+                                                            <input style="height: 30px; width: 60px"
+                                                                   value="{{ detail.count }}"
                                                                    name="qtybutton"
                                                                    class="cart-plus-minus-box"
                                                                    type="text">
                                                             <div class="inc qtybutton"><a
-                                                                    href=""
+                                                                    href="/add-naw-item-order/{{ detail.product.id }}"
                                                                     class="inc qtybutton">+</a>
                                                             </div>
                                                         </div>
@@ -119,5 +120,8 @@
 
     </div>
     <!--// Main Content \\-->
+    <div style="margin-top: 2000px;width: 300px;height: 400px; background-color: #4ac1f7">
+        <a href="{% url 'order:request' order.id "b" %}">send_request</a>
+    </div>
 
 {% endblock %}

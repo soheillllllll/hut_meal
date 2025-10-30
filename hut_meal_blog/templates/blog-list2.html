@@ -1,0 +1,23 @@
+{% extends 'blog-list.html' %}
+{% block page_blog_title %}<h1>blog gird</h1>{% endblock %}
+{% block blog_item %}
+    {% for blog in page_obj %}
+        <li class="col-md-6">
+            <div class="hotmeal-blog-grid-wrap">
+                <figure><a href="{{ blog.get_blog_detail_url }}"><img
+                        src="{{ blog.image.url }}"
+                        alt=""><span class="hover-btn"><i
+                        class="icon hotmeal-link"></i><small></small></span></a></figure>
+                <div class="hotmeal-blog-grid-text">
+                    <span>Food Restaurant</span>
+                    <time datetime="2008-02-14 20:00">21 August 2017 by <a href="404.html">John
+                        Doe</a></time>
+                    <h2><a href="{{ blog.get_blog_detail_url }}">{{ blog.title|truncatechars:60 }}</a></h2>
+                    <p>{{ blog.description|truncatechars:150 }}</p>
+                    <a href="{{ blog.get_blog_detail_url }}" class="hotmeal-simple-btn">Read More <i
+                            class="fa fa-angle-double-right"></i></a>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+{% endblock %}

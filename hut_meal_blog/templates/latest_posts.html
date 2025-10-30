@@ -1,0 +1,11 @@
+<div class="widget widget_popular_post">
+    <h2 class="widget-heading">Latest posts</h2>
+    <ul>
+        {% for blog in blogs %}
+        <li>
+            <h6><a href="{{ blog.get_blog_detail_url }}">{{ blog.title|truncatechars:30 }}</a></h6>
+            <time datetime="2008-02-14 20:00">{{ blog.time|date:"m F Y" }}</time>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

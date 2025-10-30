@@ -1,0 +1,8 @@
+<div class="widget widget_cetagories">
+    <h2 class="widget-heading">Cetagories</h2>
+    <ul>
+        {% for c in categories %}
+            <li><a href="{% url 'blog:search_blogs' %}?q={{ c.title }}">{{ c.title }}<span>()</span></a></li>
+        {% endfor %}
+    </ul>
+</div>

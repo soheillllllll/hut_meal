@@ -18,6 +18,7 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/color.css' %}" rel="stylesheet">
     <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <script src='{% static "script/index.js" %}'></script>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -37,7 +38,7 @@
             <div class="container">
                 <div class="row">
                     <aside class="col-md-2"><a href="/" class="logo"><img
-                            src="{% static 'images/logo.png' %}" alt=""></a>
+                            src="{{ setting.logo.url }}" alt=""></a>
                     </aside>
                     <aside class="col-md-10">
                         <!--// Navigation \\-->
@@ -45,34 +46,20 @@
                         <nav id="menu" class="menu navbar navbar-default">
                             <ul class="level-1 navbar-nav">
                                 <li class="active"><a href="/">Home</a></li>
-                                <li><a href="menu.html">Menu</a></li>
+                                <li><a href="{% url 'menu:menu_page' %}">Menu</a></li>
                                 <li><a href="#">Blogs</a><span class="has-subnav"><i
                                         class="fa fa-angle-down"></i></span>
                                     <ul class="sub-menu level-2">
-                                        <li><a href="blog-grid.html">Blog Grid <i
+                                        <li><a href="{% url 'blog:blog_list2' %}">Blog Grid <i
                                                 class=" fa fa-angle-right"></i></a><span class="has-subnav"><i
                                                 class="fa fa-angle-down"></i></span>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog-grid-wls.html">Blog Grid W/L/S</a></li>
-                                                <li><a href="blog-grid-wrs.html">Blog Grid W/R/S</a></li>
-                                            </ul>
+                                        </li>
+                                        <li><a href="{% url 'blog:blog_list1' %}">Blog Large <i
+                                                class=" fa fa-angle-right"></i></a><span class="has-subnav"><i
+                                                class="fa fa-angle-down"></i></span>
                                         </li>
                                         <li><a href="blog-medium.html">Blog Medium <i
                                                 class=" fa fa-angle-right"></i></a></li>
-                                        <li><a href="blog-large.html">Blog Large <i
-                                                class=" fa fa-angle-right"></i></a><span class="has-subnav"><i
-                                                class="fa fa-angle-down"></i></span>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog-large-wls.html">Blog Large W/L/S</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="blog-detail.html">Blog Detail <i
-                                                class=" fa fa-angle-right"></i></a><span class="has-subnav"><i
-                                                class="fa fa-angle-down"></i></span>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog-detail-wls.html">Blog Detail W/L/S</a></li>
-                                            </ul>
-                                        </li>
                                     </ul>
                                 </li>
                                 <li><a href="#">our shop</a><span class="has-subnav"><i
@@ -93,28 +80,9 @@
                                                 <li><a href="shop-list-wls.html">Shop List W/L/S</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="shop-detail.html">Shop Detail</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Team</a><span class="has-subnav"><i class="fa fa-angle-down"></i></span>
-                                    <ul class="sub-menu level-2">
-                                        <li><a href="team-grid.html">Team Grid <i
-                                                class=" fa fa-angle-right"></i></a><span class="has-subnav"><i
-                                                class="fa fa-angle-down"></i></span>
-                                            <ul class="sub-menu">
-                                                <li><a href="team-grid-wls.html">Team Grid W/L/S</a></li>
-                                                <li><a href="team-grid-wrs.html">Team Grid W/R/S</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="team-list.html">Team List <i
-                                                class=" fa fa-angle-right"></i></a><span class="has-subnav"><i
-                                                class="fa fa-angle-down"></i></span>
-                                            <ul class="sub-menu">
-                                                <li><a href="team-list-wls.html">Team List W/L/S</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="team-detail.html">Team Detail</a></li>
-                                    </ul>
+                                <li><a href="{% url 'team:team_list' %}">Team</a><span class="has-subnav"><i class="fa fa-angle-down"></i></span>
                                 </li>
                                 <li><a href="#">Pages</a><span class="has-subnav"><i
                                         class="fa fa-angle-down"></i></span>
@@ -144,11 +112,10 @@
                         </nav>
                         <!--// Navigation \\-->
                         <ul class="hotmeal-user-list">
-                            <li><a href="#" class="fa fa-shopping-bag"><span>0</span></a>
+                            <li><a href="{% url "order:cart_page" %}" class="fa fa-shopping-bag"><span>{{ total_count }}</span></a>
                                 <div class="hotmeal-cart-box"><p>No products in the cart.</p></div>
                             </li>
-                            <li><a href="#" class="fa fa-search" data-toggle="modal" data-target="#searchmodal"></a>
-                            </li>
+                            <li><a href="#" class="fa fa-search" data-toggle="modal" data-target="#searchmodal"></a></li>
                         </ul>
                     </aside>
                 </div>

@@ -97,9 +97,6 @@
                                                 <span style="background: {{ product_color.image_code }}"
                                                       data-toggle="tooltip" title="Chocolate"></span>
                                             {% endfor %}
-                                            {#                                            <span class="active color-one" data-toggle="tooltip" title="Chocolate"></span>#}
-                                            {#                                            <span class="color-two" data-toggle="tooltip" title="Chocolate"></span>#}
-                                            {#                                            <span class="color-three" data-toggle="tooltip" title="Chocolate"></span>#}
                                         </div>
                                         <div class="hotmeal-product-option">
                                             <ul>
@@ -175,77 +172,25 @@
                                     <div class="comments-area">
                                         <!--// coments \\-->
                                         <ul class="comment-list">
-                                            <li>
+                                            {% for comment in comments %}
+                                                <li>
                                                 <div class="thumb-list">
                                                     <figure><img alt=""
-                                                                 src="{% static 'extra-images/comment-img1.jpg' %}">
+                                                                 src="{% static 'extra-images/comment.png' %}">
                                                     </figure>
                                                     <div class="text-holder">
-                                                        <h6>Sarena Doe</h6>
-                                                        <time class="post-date" datetime="2008-02-14 20:00">August 21,
-                                                            2017 . 11:39 pm
+                                                        <h6>{{ comment.name }}</h6>
+                                                        <time class="post-date" datetime="2008-02-14 20:00">
+                                                            {{ comment.created|date:"Y-d-m P" }}
                                                         </time>
-                                                        <p>Quisque eleifend ante ut mattis ultrices. Integer ex mi,
-                                                            facilisis eget magna dictum, vestibulum sus- cipit lila.
-                                                            Curabitur bibendum consectetur volutpat ras vestibu.</p>
+                                                        <br>
+                                                        <p>{{ comment.body|linebreaks }}</p>
+                                                        <br>
                                                         <a class="comment-reply-link" href="#">Reply</a>
                                                     </div>
                                                 </div>
                                                 <!-- .children -->
-                                            </li>
-                                            <li>
-                                                <div class="thumb-list">
-                                                    <figure><img alt=""
-                                                                 src="{% static 'extra-images/comment-img2.jpg' %}">
-                                                    </figure>
-                                                    <div class="text-holder">
-                                                        <h6>Merry Joy</h6>
-                                                        <time class="post-date" datetime="2008-02-14 20:00">August 21,
-                                                            2017 . 11:39 pm
-                                                        </time>
-                                                        <p>Fusce pulvinar tortor viverra aliquam semper. Cras in sapien
-                                                            ultrices, molestie sapien ac, sodales leo. Aenean ultricies
-                                                            tellus eget sem viverra, eu venenatis ipsum congue.</p>
-                                                        <a class="comment-reply-link" href="#">Reply</a>
-                                                    </div>
-                                                </div>
-                                                <ul class="children">
-                                                    <li>
-                                                        <div class="thumb-list">
-                                                            <figure><img alt=""
-                                                                         src="{% static 'extra-images/comment-img3.jpg' %}">
-                                                            </figure>
-                                                            <div class="text-holder">
-                                                                <h6>John Mark</h6>
-                                                                <time class="post-date" datetime="2008-02-14 20:00">
-                                                                    August 21, 2017 . 11:39 pm
-                                                                </time>
-                                                                <p>Vivamus malesuada nunc nibh. Aenean eu leo nec sapien
-                                                                    ornare luctus et at justo. Interdum et malesuada
-                                                                    fames ac ante ipsum primis in faucibus.</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <!-- #comment-## -->
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <div class="thumb-list">
-                                                    <figure><img alt=""
-                                                                 src="{% static 'extra-images/comment-img4.jpg' %}">
-                                                    </figure>
-                                                    <div class="text-holder">
-                                                        <h6>Ryan Martyn</h6>
-                                                        <time class="post-date" datetime="2008-02-14 20:00">August 21,
-                                                            2017 . 11:39 pm
-                                                        </time>
-                                                        <p>Etiam auctor dignissim bibendum. Nunc pulvinar massa nunc,
-                                                            quis pellentesque felis suscipit eu. Phasellus ut ultricies
-                                                            velit. Morbi non nisl condimentum.</p>
-                                                        <a class="comment-reply-link" href="#">Reply</a>
-                                                    </div>
-                                                </div>
-                                                <!-- .children -->
+                                            {% endfor %}
                                             </li>
                                         </ul>
                                         <!--// coments \\-->
@@ -253,19 +198,16 @@
                                         <!--// comment-respond \\-->
                                         <div class="comment-respond">
                                             <h2 class="hotmeal-section-heading">Leave a Comment</h2>
-                                            <form>
+                                            <form action="." method="post">
+                                                {% csrf_token %}
                                                 <p>
-                                                    <input type="text" value="Name*"
-                                                           onblur="if(this.value == '') { this.value ='Name*'; }"
-                                                           onfocus="if(this.value =='Name*') { this.value = ''; }">
+                                                    {{ comment_form.name }}
                                                 </p>
                                                 <p>
-                                                    <input type="email" value="Email*"
-                                                           onblur="if(this.value == '') { this.value ='Email*'; }"
-                                                           onfocus="if(this.value =='Email*') { this.value = ''; }">
+                                                    {{ comment_form.email }}
                                                 </p>
                                                 <p class="hotmeal-full-form">
-                                                    <textarea name="comment" placeholder="Messege*"></textarea>
+                                                    {{ comment_form.body }}
                                                 </p>
                                                 <p><label class="submit"><input type="submit"
                                                                                 value="Submit Now"><span></span></label>
@@ -280,89 +222,24 @@
                         <!--// Tabs \\-->
                         <h2 class="hotmeal-section-heading">Related Products</h2>
                         <div class="hotmeal-shop hotmeal-shop-grid hotmeal-related-product">
-                            <ul class="row">
-                                <li class="col-md-3">
-                                    <figure><span>sale</span><a href="shop-detail.html"><img
-                                            src="{% static 'extra-images/shop-grid-img1.jpg' %}" alt=""></a>
-                                        <figcaption>
-                                            <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                    class="btn-shape"></span></a>
-                                            <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                    class="btn-shape"></span></a>
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotmeal-shop-grid-text">
-                                        <h2><a href="shop-detail.html">Brown Drink Glass</a></h2>
-                                        <div class="star-rating"><span class="star-rating-box" style="width:60%"></span>
-                                        </div>
-                                        <small>( 2 Reviews )</small>
-                                        <span>$ 25.00 <del>$ 30.00</del></span>
-                                    </div>
-                                </li>
-                                <li class="col-md-3">
-                                    <figure><span>sale</span><a href="shop-detail.html"><img
-                                            src="{% static 'extra-images/shop-grid-img2.jpg' %}" alt=""></a>
-                                        <figcaption>
-                                            <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                    class="btn-shape"></span></a>
-                                            <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                    class="btn-shape"></span></a>
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotmeal-shop-grid-text">
-                                        <h2><a href="shop-detail.html">Chocolate Cupcake</a></h2>
-                                        <div class="star-rating"><span class="star-rating-box" style="width:60%"></span>
-                                        </div>
-                                        <small>( 2 Reviews )</small>
-                                        <span>$ 25.00 <del>$ 30.00</del></span>
-                                    </div>
-                                </li>
-                                <li class="col-md-3">
-                                    <figure><span>sale</span><a href="shop-detail.html"><img
-                                            src="{% static 'extra-images/shop-grid-img3.jpg' %}" alt=""></a>
-                                        <figcaption>
-                                            <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                    class="btn-shape"></span></a>
-                                            <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                    class="btn-shape"></span></a>
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotmeal-shop-grid-text">
-                                        <h2><a href="shop-detail.html">Cookie Cocoa Homemade</a></h2>
-                                        <div class="star-rating"><span class="star-rating-box" style="width:60%"></span>
-                                        </div>
-                                        <small>( 2 Reviews )</small>
-                                        <span>$ 25.00 <del>$ 30.00</del></span>
-                                    </div>
-                                </li>
-                                <li class="col-md-3">
-                                    <figure><span>sale</span><a href="shop-detail.html"><img
-                                            src="{% static 'extra-images/shop-grid-img4.jpg' %}" alt=""></a>
-                                        <figcaption>
-                                            <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                    class="btn-shape"></span></a>
-                                            <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                    class="btn-shape"></span></a>
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotmeal-shop-grid-text">
-                                        <h2><a href="shop-detail.html">Chocolate Soft Cake</a></h2>
-                                        <div class="star-rating"><span class="star-rating-box" style="width:60%"></span>
-                                        </div>
-                                        <small>( 2 Reviews )</small>
-                                        <span>$ 25.00 <del>$ 30.00</del></span>
-                                    </div>
-                                </li>
-                            </ul>
+                            <div class="col-md-9">
+                                <div class="hotmeal-shop hotmeal-shop-grid">
+                                    <ul class="row">
+                                        {% for product in related_products %}
+                                            {% include 'product_item_component.html' with product=product %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
+            <!--// Main Section \\-->
+
         </div>
-        <!--// Main Section \\-->
+        <!--// Main Content \\-->
 
     </div>
-    <!--// Main Content \\-->
-
 {% endblock %}

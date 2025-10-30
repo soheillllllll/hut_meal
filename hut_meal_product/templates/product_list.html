@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load render_partial %}
 {% block contents %}
     {% load static %}
 
@@ -10,7 +11,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <span>Shop</span>
-                        <h1>Shop List</h1>
+                        {% block page_title %}{% endblock %}
                         <p>Sed vulputate elementum aliquam. Nunc vel efficitur ante. Ut gravida nulla id ornare
                             sodales.</p>
                     </div>
@@ -45,98 +46,26 @@
 
                         <!--// Widget Search \\-->
                         <div class="widget widget_search">
-                            <form>
-                                <input value="Search Now" onblur="if(this.value == '') { this.value ='Search Now'; }"
-                                       onfocus="if(this.value =='Search Now') { this.value = ''; }" tabindex="0"
-                                       type="text">
+                            <form id="mob-search" name="search" action="{% url 'product:product_search' %}"
+                                  method="get">
+                                <input type="text" name="q" placeholder="Search ..." value="{{ request.GET.q }}"
+                                       onblur="if(this.value == '') { this.value ='Type Your Keyword'; }"
+                                       onfocus="if(this.value =='Type Your Keyword') { this.value = ''; }">
                                 <label><input type="submit" value=""></label>
                             </form>
                         </div>
                         <!--// Widget Search \\-->
 
                         <!--// Widget Popular Post \\-->
-                        <div class="widget widget_popular_post">
-                            <h2 class="widget-heading">Popular Post</h2>
-                            <ul>
-                                <li>
-                                    <h6><a href="blog0-detail.html">Sed vulputate elementum al iquam unc vel</a></h6>
-                                    <time datetime="2008-02-14 20:00">21 August 2017</time>
-                                </li>
-                                <li>
-                                    <h6><a href="blog0-detail.html">Ut gravida nulla id ornare so dales. Aenean
-                                        aliqu</a></h6>
-                                    <time datetime="2008-02-14 20:00">31 December 2017</time>
-                                </li>
-                                <li>
-                                    <h6><a href="blog0-detail.html">Cras varius est vel massa ultr ic ies, ac rutrum
-                                        urn</a></h6>
-                                    <time datetime="2008-02-14 20:00">26 June 2018</time>
-                                </li>
-                                <li>
-                                    <h6><a href="blog0-detail.html">Donec eu porta velit. Nam at urna eu libero
-                                        suscip</a></h6>
-                                    <time datetime="2008-02-14 20:00">22 May 2018</time>
-                                </li>
-                            </ul>
-                        </div>
+                        {% render_partial 'latest_posts' %}
                         <!--// Widget Popular Post \\-->
-
+                        {% render_partial 'list_tags' %}
                         <!--// Widget Cetagories \\-->
-                        <div class="widget widget_cetagories">
-                            <h2 class="widget-heading">Cetagories</h2>
-                            <ul>
-                                <li><a href="404.html">Gallery <span>(12)</span></a></li>
-                                <li><a href="404.html">Restaurant <span>(09)</span></a></li>
-                                <li><a href="404.html">Food <span>(17)</span></a></li>
-                                <li><a href="404.html">Pizza <span>(08)</span></a></li>
-                                <li><a href="404.html">Burger <span>(05)</span></a></li>
-                                <li><a href="404.html">Dessert <span>(05)</span></a></li>
-                            </ul>
-                        </div>
+                        {% render_partial 'list_product_categories' %}
                         <!--// Widget Cetagories \\-->
 
                         <!--// Widget Best Deals \\-->
-                        <div class="widget widget_deals">
-                            <h2 class="widget-heading">Best Deals</h2>
-                            <ul>
-                                <li>
-                                    <figure><a href="menu.html"><img
-                                            src="{% static 'extra-images/widget-deal-img1.jpg' %}" alt=""></a>
-                                    </figure>
-                                    <div class="widget-deals-text">
-                                        <h6><a href="menu.html">Large Fajita Pizza</a></h6>
-                                        <span>$ 150.00</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <figure><a href="menu.html"><img
-                                            src="{% static 'extra-images/widget-deal-img2.jpg' %}" alt=""></a>
-                                    </figure>
-                                    <div class="widget-deals-text">
-                                        <h6><a href="menu.html">Fresh Tomato Juice</a></h6>
-                                        <span>$ 75.00</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <figure><a href="menu.html"><img
-                                            src="{% static 'extra-images/widget-deal-img3.jpg' %}" alt=""></a>
-                                    </figure>
-                                    <div class="widget-deals-text">
-                                        <h6><a href="menu.html">Chicken Burger</a></h6>
-                                        <span>$ 150.00</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <figure><a href="menu.html"><img
-                                            src="{% static 'extra-images/widget-deal-img4.jpg' %}" alt=""></a>
-                                    </figure>
-                                    <div class="widget-deals-text">
-                                        <h6><a href="menu.html">Chocolate dessert</a></h6>
-                                        <span>$ 200.00</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                        {% render_partial 'special_products' %}
                         <!--// Widget Best Deals \\-->
 
                         <!--// Widget Calendar Archives \\-->
@@ -161,11 +90,17 @@
                             <span>Showing 1-6 of 30 Results</span>
                             <!-- Nav tabs -->
                             <ul class="nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
-                                                                          data-toggle="tab"><i
+                                <li role="presentation" class="active"><a href="#home"
+                                                                          aria-controls="home"
+                                                                          role="tab"
+                                                                          data-toggle="tab"
+                                ><i
                                         class="icon hotmeal-signs22"></i> <span>List</span></a></li>
-                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
-                                                           data-toggle="tab"><i class="icon hotmeal-squares2"></i>
+                                <li role="presentation"><a href="#profile"
+                                                           aria-controls="profile"
+                                                           role="tab"
+                                                           data-toggle="tab"
+                                ><i class="icon hotmeal-squares2"></i>
                                     <span>Grid</span></a></li>
                             </ul>
                             <!-- Tab panes -->
@@ -180,361 +115,90 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="home">
-                                <div class="hotmeal-shop hotmeal-shop-list">
-                                    <ul class="row">
-                                        {% for product in page_obj %}
-                                            <li class="col-md-12">
-                                                <figure><a href="{{ product.get_product_detail_url }}"><img
-                                                        src="{{ product.image.url }}"
-                                                        alt=""><span
-                                                        class="hover-btn"><i
-                                                        class="icon hotmeal-link"></i><small></small></span></a>
-                                                </figure>
-                                                <div class="hotmeal-shop-list-text">
-                                                    <h2><a href="{{ product.get_product_detail_url }}">{{ product.title }}</a></h2>
-                                                    <div class="star-rating"><span class="star-rating-box"
-                                                                                   style="width:60%"></span></div>
-                                                    <small>( 2 Reviews )</small>
-                                                    {% if product.discount.percentage > 0 %}
-                                                    <span> $ {{ product.price2 }}<del> $ {{ product.price }}</del></span>
-                                                    {% else %}
-                                                        <span> $ {{ product.price }}</span>
-                                                    {% endif %}
-                                                    <p>{{ product.description|truncatechars:250 }}</p>
-                                                    <a href="blog-detail.html" class="hotmeal-learn-btn">Add To Cart
-                                                        <span
-                                                                class="btn-shape"></span></a>
-                                                </div>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                                <!--// Pagination \\-->
-                                <div class="hotmeal-pagination">
-                                    <ul class="page-numbers">
-                                        <li><a class="previous page-numbers" href="404.html"><span aria-label="Next"><i
-                                                class="fa fa-angle-left"></i></span> <small
-                                                class="btn-shape"></small></a></li>
-                                        <li><span class="page-numbers current">01 <small
-                                                class="btn-shape"></small></span></li>
-                                        <li><a class="page-numbers" href="404.html">02 <small class="btn-shape"></small></a>
-                                        </li>
-                                        <li><a class="page-numbers" href="404.html">03 <small class="btn-shape"></small></a>
-                                        </li>
-                                        <li><a class="page-numbers" href="404.html">04 <small class="btn-shape"></small></a>
-                                        </li>
-                                        <li><a class="next page-numbers" href="404.html"><span aria-label="Next"><i
-                                                class="fa fa-angle-right"></i></span> <small class="btn-shape"></small></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!--// Pagination \\-->
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="profile">
-                                <div class="hotmeal-shop hotmeal-shop-grid">
-                                    <ul class="row">
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img1.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Brown Drink Glass</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img2.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Chocolate Cupcake</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img3.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Cookie Cocoa Homemade</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img4.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Chocolate Soft Cake</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img5.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Delicious Cake With Cherry </a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img6.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Fresh Mango Smoothie</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img7.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Chocolate Almond Cake</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img8.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Mixed Berries Yougurt</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img9.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Pack Of Oat Cookies</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img10.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Milky Chocolates</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img11.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Pack Of Butter Cookies</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img12.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Milk Chocolate Balls</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img1.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Brown Drink Glass</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img2.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Chocolate Cupcake</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                        <li class="col-md-4">
-                                            <figure><span>sale</span><a href="shop-detail.html"><img
-                                                    src="{% static 'extra-images/shop-grid-img3.jpg' %}" alt=""></a>
-                                                <figcaption>
-                                                    <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                    <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span
-                                                            class="btn-shape"></span></a>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="hotmeal-shop-grid-text">
-                                                <h2><a href="shop-detail.html">Cookie Cocoa Homemade</a></h2>
-                                                <div class="star-rating"><span class="star-rating-box"
-                                                                               style="width:60%"></span></div>
-                                                <small>( 2 Reviews )</small>
-                                                <span>$ 25.00 <del>$ 30.00</del></span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!--// Pagination \\-->
-                                <div class="hotmeal-pagination">
-                                    <ul class="page-numbers">
-                                        <li><a class="previous page-numbers" href="404.html"><span aria-label="Next"><i
-                                                class="fa fa-angle-left"></i></span> <small
-                                                class="btn-shape"></small></a></li>
-                                        <li><span class="page-numbers current">01 <small
-                                                class="btn-shape"></small></span></li>
-                                        <li><a class="page-numbers" href="404.html">02 <small class="btn-shape"></small></a>
-                                        </li>
-                                        <li><a class="page-numbers" href="404.html">03 <small class="btn-shape"></small></a>
-                                        </li>
-                                        <li><a class="page-numbers" href="404.html">04 <small class="btn-shape"></small></a>
-                                        </li>
-                                        <li><a class="next page-numbers" href="404.html"><span aria-label="Next"><i
-                                                class="fa fa-angle-right"></i></span> <small class="btn-shape"></small></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!--// Pagination \\-->
-                            </div>
-                        </div>
-                    </div>
+                        {% block product_item %}
 
+                        {% endblock %}
+                        <!--// Pagination \\-->
+                        <div class="hotmeal-pagination">
+                            <ul class="page-numbers">
+                                {% if page_obj.has_previous %}
+                                    <li><a class="previous page-numbers"
+                                           href="?page={{ page_obj.previous_page_number }}"><span
+                                            aria-label="Next"><i
+                                            class="fa fa-angle-left"></i></span> <small
+                                            class="btn-shape"></small></a>
+                                    </li>
+                                {% endif %}
+                                {% for page in paginator.page_range %}
+                                    {% if page == page_obj.number %}
+                                        <li class="active"><a class="page-numbers"
+                                                              href="?page={{ page }}">{{ page }}</a></li>
+                                    {% else %}
+                                        <li><a href="?page={{ page }}">{{ page }} <small
+                                                class="btn-shape"></small></a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                    <li><a class="next page-numbers"
+                                           href="?page={{ page_obj.next_page_number }}"><span
+                                            aria-label="Next"><i
+                                            class="fa fa-angle-right"></i></span> <small
+                                            class="btn-shape"></small></a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <!--// Pagination \\-->
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <div class="hotmeal-shop hotmeal-shop-grid">
+                            <ul class="row">
+                                {% for product in page_obj %}
+                                    {% include 'product_item_component.html' with product=product %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <!--// Pagination \\-->
+                        <div class="hotmeal-pagination">
+                            <ul class="page-numbers">
+                                {% if page_obj.has_previous %}
+                                    <li><a class="previous page-numbers"
+                                           href="?page={{ page_obj.previous_page_number }}"><span
+                                            aria-label="Next"><i
+                                            class="fa fa-angle-left"></i></span> <small
+                                            class="btn-shape"></small></a>
+                                    </li>
+                                {% endif %}
+                                {% for page in paginator.page_range %}
+                                    {% if page == page_obj.number %}
+                                        <li class="active"><a class="page-numbers"
+                                                              href="?page={{ page }}">{{ page }}</a></li>
+                                    {% else %}
+                                        <li><a href="?page={{ page }}">{{ page }} <small
+                                                class="btn-shape"></small></a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                    <li><a class="next page-numbers"
+                                           href="?page={{ page_obj.next_page_number }}"><span
+                                            aria-label="Next"><i
+                                            class="fa fa-angle-right"></i></span> <small
+                                            class="btn-shape"></small></a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <!--// Pagination \\-->
+                    </div>
                 </div>
             </div>
+
         </div>
-        <!--// Main Section \\-->
+    </div>
+    </div>
+    <!--// Main Section \\-->
 
     </div>
     <!--// Main Content \\-->

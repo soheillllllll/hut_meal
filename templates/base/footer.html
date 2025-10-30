@@ -9,10 +9,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="hotmeal-footer-heading">
-                    <a href="index-2.html" class="logo"><img src="{% static 'images/logo.png' %}" alt=""></a>
-                    <p>Sed vulputate elementum aliquam. Nunc vel efficitur ante. Ut gravida nulla id ornare soda les.
-                        Aenean aliquam mauris purus, eget mollis lectus sagittis sed. Cras varius est vel mcsasvsa
-                        ultricies, ac rutrum urna hendrerit.</p>
+                    <a href="/" class="logo"><img src="{{ setting.logo.url }}" alt=""></a>
+                    <p>{{ setting.footer_text }}</p>
                 </div>
             </div>
         </div>
@@ -27,18 +25,12 @@
                 <aside class="col-md-4 widget widget_latest_post">
                     <h2 class="footer-widget-title">Latest Post</h2>
                     <ul>
+                        {% for latest_blogs in latest_blogs %}
                         <li>
-                            <h6><a href="blog-detail.html">Fusce pulvinar tortor viverra aliqu</a></h6>
-                            <time datetime="2008-02-14 20:00">14 Oct 2017</time>
+                            <h6><a href="{{ latest_blogs.get_blog_detail_url }}">{{ latest_blogs.title }}</a></h6>
+                            <time datetime="2008-02-14 20:00">{{ latest_blogs.time|date:"m F Y" }}</time>
                         </li>
-                        <li>
-                            <h6><a href="blog-detail.html">Cras in sapien ultrices, molestie sapien</a></h6>
-                            <time datetime="2008-02-14 20:00">28 Nov 2017</time>
-                        </li>
-                        <li>
-                            <h6><a href="blog-detail.html">Aenean ultricies tellus eget sem vive</a></h6>
-                            <time datetime="2008-02-14 20:00">03 Dec 2017</time>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </aside>
                 <!--// Widget About Us \\-->
@@ -47,18 +39,18 @@
                 <aside class="col-md-4 widget widget_links">
                     <h2 class="footer-widget-title">Useful Links</h2>
                     <ul>
-                        <li><a href="404.html">History</a></li>
-                        <li><a href="404.html">Services</a></li>
-                        <li><a href="404.html">Team & Awards</a></li>
+                        <li><a href="{% url 'about_us' %}">History</a></li>
+                        <li><a href="{% url 'menu:menu_page' %}">Services</a></li>
+                        <li><a href="{% url 'team:team_list' %}">Team & A</a></li>
                         <li><a href="404.html">Delivery Methods</a></li>
-                        <li><a href="404.html">Community</a></li>
-                        <li><a href="404.html">Safety</a></li>
-                        <li><a href="404.html">News & Events</a></li>
-                        <li><a href="404.html">Sustainability</a></li>
-                        <li><a href="404.html">FAQ</a></li>
-                        <li><a href="404.html">Portfolio</a></li>
-                        <li><a href="404.html">News & Events</a></li>
-                        <li><a href="404.html">Safety</a></li>
+                        <li><a href="{% url 'team:team_list' %}">Community</a></li>
+                        <li><a href="">Safety</a></li>
+                        <li><a href="{% url 'blog:blog_list1' %}">News & Events</a></li>
+                        <li>Sustainability</li>
+                        <li><a href="{% url 'contact:contact_us' %}">FAQ</a></li>
+                        <li><a href="{% url 'profile:account_main_page' %}">Portfolio</a></li>
+                        <li><a href="{% url 'blog:blog_list2' %}">News & Events</a></li>
+                        <li><a href="">Safety</a></li>
                     </ul>
                 </aside>
                 <!--// Widget Links \\-->
@@ -67,11 +59,12 @@
                 <aside class="col-md-4 widget widget_newsletter">
                     <h2 class="footer-widget-title">Our Newsletter</h2>
                     <p>Etiam auctor dignissim bibendum. Nunc pulvinar massa nunc, quis pellentesque.</p>
-                    <form>
+                    <form action="{% url 'profile:register_page' %}" method="post">
+                        {% csrf_token %}
                         <ul>
-                            <li><input type="text" value="Name*" onblur="if(this.value == '') { this.value ='Name*'; }"
+                            <li><input name="first_name" type="text" value="Name*" onblur="if(this.value == '') { this.value ='Name*'; }"
                                        onfocus="if(this.value =='Name*') { this.value = ''; }"></li>
-                            <li><input type="email" value="Email*"
+                            <li><input name="email" type="email" value="Email*"
                                        onblur="if(this.value == '') { this.value ='Email*'; }"
                                        onfocus="if(this.value =='Email*') { this.value = ''; }"></li>
                             <li><label class="submit"><input type="submit" value="Subscribe Now"><span></span></label>
@@ -111,11 +104,11 @@
     <div class="modal-dialog" role="document">
         <div class="modal-body">
             <a href="#" class="hotmeal-close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
-            <form>
-                <input type="text" value="Type Your Keyword"
+            <form id="mob-search" name="search" action="{% url 'product:product_search' %}" method="get">
+                <input type="text" name="q" placeholder="Search ..." value="{{ request.GET.q }}"
                        onblur="if(this.value == '') { this.value ='Type Your Keyword'; }"
                        onfocus="if(this.value =='Type Your Keyword') { this.value = ''; }">
-                <input type="submit" value="">
+                <button type="submit" ></button>
                 <i class="fa fa-search"></i>
             </form>
         </div>

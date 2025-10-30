@@ -3,7 +3,7 @@
                                                                                  alt=""></a>
         <figcaption>
             <a href="shop-detail.html"><i class="icon hotmeal-link"></i> <span class="btn-shape"></span></a>
-            <a href="shop-detail.html"><i class="fa fa-shopping-bag"></i> <span class="btn-shape"></span></a>
+            <a href="{% url 'order:add_new_item_order' product.id %}"><i class="fa fa-shopping-bag"></i> <span class="btn-shape"></span></a>
         </figcaption>
     </figure>
     <div class="hotmeal-shop-grid-text">

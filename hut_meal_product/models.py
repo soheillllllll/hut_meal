@@ -4,6 +4,10 @@ import random
 from django.db import models
 from django.db.models import Q
 
+from hut_meal_brand.models import ProductBrand
+from hut_meal_category.models import ProductCategory
+
+
 # from store_brand.models import ProductBrand
 # from store_products_category.models import ProductCategory
 
@@ -75,7 +79,7 @@ class ProductManager(models.Manager):
 
 
     def search_products(self, query):
-        lookup = Q(title__icontains=query) | Q(description__icontains=query) | Q(tag__title__icontains=query)
+        lookup = Q(title__icontains=query) | Q(description__icontains=query) | Q(tag__title__icontains=query) | Q(categories__title__icontains=query)
         return self.get_queryset().filter(lookup, active=True).distinct()
 
     def get_product_by_category(self, category_name):
@@ -93,10 +97,10 @@ class Product(models.Model):
     image = models.ImageField(upload_to=upload_image, null=True, blank=True, verbose_name="تصویر")
     active = models.BooleanField(default=False, verbose_name="فعال/غیرفعال")
     time = models.DateTimeField(auto_now_add=True)
-    # categories = models.ManyToManyField(ProductCategory, blank=True, verbose_name='دسته بندی')
+    categories = models.ManyToManyField(ProductCategory, blank=True, verbose_name='دسته بندی')
     color = models.ManyToManyField(ProductColor, blank=True, verbose_name='رنگ')
     size = models.ManyToManyField(ProductSize, blank=True, verbose_name='سایز')
-    # brand = models.ForeignKey(ProductBrand, on_delete=models.CASCADE, verbose_name='برند')
+    brand = models.ForeignKey(ProductBrand, on_delete=models.CASCADE, verbose_name='برند')
     featured = models.BooleanField(default=False, verbose_name='محصول ویژه')
     visits = models.IntegerField(default=0, verbose_name='تعداد مشاهده')
     discount = models.ForeignKey(ProductDiscount, on_delete=models.CASCADE, verbose_name='درصد تخفیف %')

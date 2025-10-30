@@ -44,6 +44,15 @@ INSTALLED_APPS = [
     'hut_meal_user',
     'hut_meal_order',
     'hut_meal_product',
+    'hut_meal_comment',
+    'hut_meal_category',
+    'hut_meal_brand',
+    'hut_meal_reservation',
+    'hut_meal_menu',
+    'hut_meal_Team',
+    'hut_meal_setting',
+    'hut_meal_blog',
+    'hut_meal_tag',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +151,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,"statics", "media_root")
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MERCHANT = "00000000-0000-0000-0000-000000000000"
+
+SANDBOX = True

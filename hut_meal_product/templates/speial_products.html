@@ -1,0 +1,16 @@
+<div class="widget widget_deals">
+    <h2 class="widget-heading">Best Deals</h2>
+    <ul>
+        {% for product in products %}
+        <li>
+            <figure><a href="menu.html"><img
+                    src="{{ product.image.url }}" alt=""></a>
+            </figure>
+            <div class="widget-deals-text">
+                <h6><a href="menu.html">{{ product.title }}</a></h6>
+                <span>{{ product.price2 }}</span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

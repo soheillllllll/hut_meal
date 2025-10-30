@@ -1,0 +1,24 @@
+{% load static %}
+<div class="hotmeal-main-section hotmeal-partnerfull">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="hotmeal-fancy-title">
+                    <span>Hot Meal</span>
+                    <h2>Meet Our Partners</h2>
+                    <img src="{% static 'images/fancy-title-img.png' %}" alt="">
+                </div>
+                <div class="hotmeal-partner">
+                    <ul>
+                        {% for brand in brands %}
+                            <li><a href="{% url 'brand:product_list_by_brand' brand.name %}"><img
+                                    src="{{ brand.image.url }}" alt=""></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

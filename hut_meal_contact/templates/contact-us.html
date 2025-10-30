@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load render_partial %}
 {% load static %}
 {% block contents %}
     <!--// SubHeader \\-->
@@ -23,8 +24,7 @@
                                             <i class="icon hotmeal-telephone"></i>
                                             <small></small>
                                             <h5>Call Us At</h5>
-                                            <p>(00) 123 45 678</p>
-                                            <p>987 65 432</p>
+                                            <p>{{ setting.phone }}</p>
                                         </div>
                                     </li>
                                     <li>
@@ -32,8 +32,7 @@
                                             <i class="icon hotmeal-close-envelope"></i>
                                             <small></small>
                                             <h5>Mail Us At</h5>
-                                            <a href="mailto:yourdomain@name.com">info@example.com</a>
-                                            <a href="mailto:yourdomain@name.com">hotmeal@abc.com</a>
+                                            <a href="mailto:yourdomain@name.com">{{ setting.email }}</a>
                                         </div>
                                     </li>
                                     <li>
@@ -41,14 +40,14 @@
                                             <i class="icon hotmeal-facebook-placeholder-for-locate-places-on-maps"></i>
                                             <small></small>
                                             <h5>Meet Us At</h5>
-                                            <p>Fusce pulvinar tortor viverra aliquam semper ras</p>
+                                            <p>{{ setting.address }}</p>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                             <div class="hotmeal-contact-form">
-                                <form method="post" class="myform"
-                                      action="https://eyecix.com/html/hotmeal/process-form.php">
+                                <form method="post" action="{% url 'contact:contact_us' %}">
+                                    {% csrf_token %}
                                     <ul>
                                         <li>
                                             <input value="Name*" name="name"
@@ -89,33 +88,7 @@
         <!--// Main Section \\-->
 
         <!--// Main Section \\-->
-        <div class="hotmeal-main-section hotmeal-partnerfull">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-md-12">
-                        <div class="hotmeal-fancy-title">
-                            <span>Hot Meal</span>
-                            <h2>Meet Our Partners</h2>
-                            <img src="{% static 'images/fancy-title-img.png' %}" alt="">
-                        </div>
-                        <div class="hotmeal-partner">
-                            <ul>
-                                <li><a href="404.html"><img src="{% static 'extra-images/partner-img1.jpg' %}" alt=""></a></li>
-                                <li><a href="404.html"><img src="{% static 'extra-images/partner-img2.jpg' %}" alt=""></a></li>
-                                <li><a href="404.html"><img src="{% static 'extra-images/partner-img3.jpg' %}" alt=""></a></li>
-                                <li><a href="404.html"><img src="{% static 'extra-images/partner-img4.jpg' %}" alt=""></a></li>
-                                <li><a href="404.html"><img src="{% static 'extra-images/partner-img3.jpg' %}" alt=""></a></li>
-                                <li><a href="404.html"><img src="{% static 'extra-images/partner-img4.jpg' %}" alt=""></a></li>
-                                <li><a href="404.html"><img src="{% static 'extra-images/partner-img1.jpg' %}" alt=""></a></li>
-                                <li><a href="404.html"><img src="{% static 'extra-images/partner-img2.jpg' %}" alt=""></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+        {% render_partial 'render_brand_list' %}
         <!--// Main Section \\-->
 
     </div>

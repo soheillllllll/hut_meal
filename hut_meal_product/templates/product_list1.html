@@ -1,0 +1,39 @@
+{% extends 'product_list.html' %}
+{% block page_product_title %}<h1>Shop List</h1>{% endblock %}
+{% block product_item %}
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <div class="hotmeal-shop hotmeal-shop-list">
+                <ul class="row">
+                    {% for product in page_obj %}
+                        <li class="col-md-12">
+                            <figure><a href="{{ product.get_product_detail_url }}"><img
+                                    src="{{ product.image.url }}"
+                                    alt=""><span
+                                    class="hover-btn"><i
+                                    class="icon hotmeal-link"></i><small></small></span></a>
+                            </figure>
+                            <div class="hotmeal-shop-list-text">
+                                <h2>
+                                    <a href="{{ product.get_product_detail_url }}">{{ product.title }}</a>
+                                </h2>
+                                <div class="star-rating"><span class="star-rating-box"
+                                                               style="width:60%"></span></div>
+                                <small>( 2 Reviews )</small>
+                                {% if product.discount.percentage > 0 %}
+                                    <span> $ {{ product.price2 }}
+                                                                    <del> $ {{ product.price }}</del></span>
+                                {% else %}
+                                    <span> $ {{ product.price }}</span>
+                                {% endif %}
+                                <p>{{ product.description|truncatechars:250 }}</p>
+                                <a href="{% url 'order:add_new_item_order' product.id %}"
+                                   class="hotmeal-learn-btn">Add To Cart
+                                    <span
+                                            class="btn-shape"></span></a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+{% endblock %}

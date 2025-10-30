@@ -1,0 +1,1 @@
+default_app_config = 'hut_meal_order.apps.HutMealOrderConfig'

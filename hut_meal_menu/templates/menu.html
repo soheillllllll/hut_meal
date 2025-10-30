@@ -1,0 +1,261 @@
+{% extends 'base/base.html' %}
+{% block contents %}
+    {% load static %}
+
+    <!--// SubHeader \\-->
+    <div class="hotmeal-subheader">
+        <span class="hotmeal-subheader-transparent"></span>
+        <div class="hotmeal-subheader-text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>Menu</span>
+                        <h1>Our Menu</h1>
+                        <p>Sed vulputate elementum aliquam. Nunc vel efficitur ante. Ut gravida nulla id ornare
+                            sodales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hotmeal-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="index-2.html">Homepage</a></li>
+                            <li class="active">Our Menu</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader \\-->
+
+    <!--// Main Content \\-->
+    <div class="hotmeal-main-content">
+
+        <!--// Main Section \\-->
+        <div class="hotmeal-main-section hotmeal-breakfastfull">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="hotmeal-fancy-title">
+                            <span>Today’s Menu</span>
+                            <h2>Breakfast For Today</h2>
+                            <img src="{% static 'images/fancy-title-img.png' %}" alt="">
+                        </div>
+                        <div class="hotmeal-filterable hotmeal-breakfast">
+                            <ul class="filters-buttonone-group">
+                                <li><a data-filter="*" class="is-checked" href="javascript:void(0)"><i
+                                        class="icon hotmeal-serve"></i>All Day</a></li>
+                                <li><a data-filter=".beverage" href="javascript:void(0)"><i
+                                        class="icon hotmeal-cocktail"></i>beverage</a></li>
+                                <li><a data-filter=".desserts" href="javascript:void(0)"><i
+                                        class="icon hotmeal-cupcake"></i>desserts</a></li>
+                                <li><a data-filter=".drinks" href="javascript:void(0)"><i
+                                        class="icon hotmeal-food-1"></i>Drinks</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="hotmeal-menu hotmeal-menu-list hotmeal-menu-filter hotmeal-breakfast-manu">
+                            <ul class="row">
+                                {% for menu_item in menus_breakfast %}
+                                    <li class="col-md-6 element-item desserts">
+                                        <div class="hotmeal-menu-list-text">
+                                            <h5><a href="menu-detail.html">{{ menu_item.title }}</a></h5>
+                                            <span>$ {{ menu_item.price }}</span>
+                                            <p>{{ menu_item.description|truncatechars:120 }}</p>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                                {#                                <li class="col-md-6 element-item drinks">#}
+                                {#                                    <div class="hotmeal-menu-list-text">#}
+                                {#                                        <h5><a href="menu-detail.html">Garden Salad</a></h5>#}
+                                {#                                        <span>$ 22.00</span>#}
+                                {#                                        <p>Donec porta magna eget leo molestie, tempus consectetur erat facilisis.#}
+                                {#                                            Suspendisse justo ante, tempus at nulla eu, </p>#}
+                                {#                                    </div>#}
+                                {#                                </li>#}
+                                {#                                <li class="col-md-6 element-item desserts">#}
+                                {#                                    <div class="hotmeal-menu-list-text">#}
+                                {#                                        <h5><a href="menu-detail.html">Heirloom Tomato Salad</a></h5>#}
+                                {#                                        <span>$ 14.00</span>#}
+                                {#                                        <p>Nulla vehicula mattis turpis ut cursus. Nunc in augue nec massa sollicitudin#}
+                                {#                                            placerat. Proin porttitorac.</p>#}
+                                {#                                    </div>#}
+                                {#                                </li>#}
+                                {#                                <li class="col-md-6 element-item beverage">#}
+                                {#                                    <div class="hotmeal-menu-list-text">#}
+                                {#                                        <h5><a href="menu-detail.html">Papaya Salad</a></h5>#}
+                                {#                                        <span>$ 19.00</span>#}
+                                {#                                        <p>Vestibulum posuere erat ullamcorper metus elementum feugiat maec enas finibus#}
+                                {#                                            dignissim metus pulvinar pretium.</p>#}
+                                {#                                    </div>#}
+                                {#                                </li>#}
+                                {#                                <li class="col-md-6 element-item drinks">#}
+                                {#                                    <div class="hotmeal-menu-list-text">#}
+                                {#                                        <h5><a href="menu-detail.html">Prosciutto & Shaved Pear Salad</a></h5>#}
+                                {#                                        <span>$ 17.00</span>#}
+                                {#                                        <p>Etiam rutrum odio id nunc rutrum fringilla quis non mi. Nam nibh nunc, cursus#}
+                                {#                                            ac#}
+                                {#                                            nunc egestas.</p>#}
+                                {#                                    </div>#}
+                                {#                                </li>#}
+                                {#                                <li class="col-md-6 element-item beverage drinks">#}
+                                {#                                    <div class="hotmeal-menu-list-text">#}
+                                {#                                        <h5><a href="menu-detail.html">Wild Arugula Salad</a></h5>#}
+                                {#                                        <span>$ 08.00</span>#}
+                                {#                                        <p>Nullam cursus sapien et enim hendrerit congue. Suspendisse ac urna eget mi#}
+                                {#                                            varius#}
+                                {#                                            maximus at auctor risus.</p>#}
+                                {#                                    </div>#}
+                                {#                                </li>#}
+                                {#                                <li class="col-md-6 element-item desserts">#}
+                                {#                                    <div class="hotmeal-menu-list-text">#}
+                                {#                                        <h5><a href="menu-detail.html">Tomato Coconut Soup</a></h5>#}
+                                {#                                        <span>$ 09.99</span>#}
+                                {#                                        <p>Suspendisse id elit ligula. Morbi elementum dignissim sagittis. Donec libero#}
+                                {#                                            ligula, scelerisque at justo a, tempoaugue </p>#}
+                                {#                                    </div>#}
+                                {#                                </li>#}
+                                {#                                <li class="col-md-6 element-item beverage">#}
+                                {#                                    <div class="hotmeal-menu-list-text">#}
+                                {#                                        <h5><a href="menu-detail.html">Italian Spaghetti</a></h5>#}
+                                {#                                        <span>$ 12.00</span>#}
+                                {#                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac#}
+                                {#                                            turpis egestas. Fusce pulvinar porttitor</p>#}
+                                {#                                    </div>#}
+                                {#                                </li>#}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="hotmeal-best-offer">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="hotmeal-best-offer-text">
+                                        <h2>Today’s Best Offer </h2>
+                                        <p>Fusce pulvinar tortor viverra aliquam semper. Cras in sapien ultrices,
+                                            molestie
+                                            sapien ac, sodales leo. Aenean ultricies tellus eget sem viverra, eu
+                                            venenatis
+                                            ipsum congue. Vivamus malesuada nunc nibh. Aenean eu leo nec sapien ornare
+                                            luctus et at justo. Interdum et malesuada fames ac ante ipsum primis in
+                                            faucibus.</p>
+                                        <p>Etiam auctor dignissim bibendum. Nunc pulvinar massa nunc, quis pellentesque
+                                            felis suscipit eu. Phasellus ut ultricies velit. Morbi non nisl condimentum,
+                                            congue lectus sit amet, aliquet urna. Phasel- lus metus risus, ultricies a
+                                            arcu
+                                            vitae, rutrum iaculis dolor.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="hotmeal-best-thumb">
+                                        <img src="{% static 'extra-images/price-thumb.png' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+        <!--// Main Section \\-->
+        <div class="hotmeal-main-section hotmeal-menu-listfull">
+            <span class="menu-list-transperant"></span>
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="hotmeal-fancy-title color">
+                            <span>Tasty & Crunchy</span>
+                            <h2>Menu Of The Day</h2>
+                            <img src="{% static 'images/fancy-title-img.png' %}" alt="">
+                        </div>
+                        <div class="hotmeal-filterable">
+                            <ul class="filters-button-group">
+                                <li><a data-filter="*" class="is-checked" href="javascript:void(0)"><i
+                                        class="icon hotmeal-serve"></i>All Day</a></li>
+                                <li><a data-filter=".beverage" href="javascript:void(0)"><i
+                                        class="icon hotmeal-cocktail"></i>beverage</a></li>
+                                <li><a data-filter=".desserts" href="javascript:void(0)"><i
+                                        class="icon hotmeal-cupcake"></i>desserts</a></li>
+                                <li><a data-filter=".drinks" href="javascript:void(0)"><i
+                                        class="icon hotmeal-food-1"></i>Drinks</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="hotmeal-menu hotmeal-menu-list hotmeal-menu-filter">
+                            <ul class="row">
+                                {% for menu_item in menus_lunch %}
+                                <li class="col-md-6 element-item desserts">
+                                    <div class="hotmeal-menu-list-text">
+                                        <h5><a href="menu-detail.html">{{ menu_item.title }}</a></h5>
+                                        <span>$ {{ menu_item.price }}</span>
+                                        <p>{{ menu_item.description|truncatechars:120 }}</p>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+        <!--// Main Section \\-->
+        <div class="hotmeal-main-section hotmeal-dinner-menufull">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="hotmeal-fancy-title">
+                            <span>Today’s Menu</span>
+                            <h2>Dinner For Today</h2>
+                            <img src="{% static 'images/fancy-title-img.png' %}" alt="">
+                        </div>
+                        <div class="hotmeal-filterable hotmeal-breakfast">
+                            <ul class="filters-buttontwo-group">
+                                <li><a data-filter="*" class="is-checked" href="javascript:void(0)"><i
+                                        class="icon hotmeal-serve"></i>All Day</a></li>
+                                <li><a data-filter=".beverage" href="javascript:void(0)"><i
+                                        class="icon hotmeal-cocktail"></i>beverage</a></li>
+                                <li><a data-filter=".desserts" href="javascript:void(0)"><i
+                                        class="icon hotmeal-cupcake"></i>desserts</a></li>
+                                <li><a data-filter=".drinks" href="javascript:void(0)"><i
+                                        class="icon hotmeal-food-1"></i>Drinks</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="hotmeal-menu hotmeal-menu-list hotmeal-menu-filter hotmeal-dinner-manu">
+                            <ul class="row">
+                                {% for menu_item in menus_dinner %}
+                                <li class="col-md-6 element-item desserts">
+                                    <div class="hotmeal-menu-list-text">
+                                        <h5><a href="menu-detail.html">{{ menu_item.title }}</a></h5>
+                                        <span>$ {{ menu_item.price }}</span>
+                                        <p>{{ menu_item.description|truncatechars:120 }}</p>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+    </div>
+    <!--// Main Content \\-->
+
+{% endblock %}

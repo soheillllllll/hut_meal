@@ -1,0 +1,243 @@
+{% extends 'base/base.html' %}
+{% load render_partial %}
+{% load static %}
+{% block contents %}
+    <!--// SubHeader \\-->
+    <div class="hotmeal-subheader">
+        <span class="hotmeal-subheader-transparent"></span>
+        <div class="hotmeal-subheader-text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>Blogs</span>
+                        <h1>Blog Detail</h1>
+                        <p>Sed vulputate elementum aliquam. Nunc vel efficitur ante. Ut gravida nulla id ornare
+                            sodales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hotmeal-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="index-2.html">Homepage</a></li>
+                            <li class="active">Blog Detail W/L/Sidebar</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader \\-->
+
+    <!--// Main Content \\-->
+    <div class="hotmeal-main-content">
+
+        <!--// Main Section \\-->
+        <div class="hotmeal-main-section">
+            <div class="container">
+                <div class="row">
+
+                    <!--// Sidebar \\-->
+                    <aside class="col-md-3">
+
+                        <!--// Widget Search \\-->
+                        <div class="widget widget_search">
+                            <form id="mob-search" name="search" action="{% url 'blog:search_blogs' %}" method="get">
+                                <input name="q" placeholder="Search ..." value="{{ request.GET.q }}"
+                                       onblur="if(this.value == '') { this.value ='Search Now'; }"
+                                       onfocus="if(this.value =='Search Now') { this.value = ''; }" tabindex="0"
+                                       type="text">
+                                <label><input type="submit" value=""></label>
+                            </form>
+                        </div>
+                        <!--// Widget Search \\-->
+
+                        <!--// Widget Author \\-->
+                        <div class="widget widget_author">
+                            <figure><a href="404.html"><img style="height: 120px;width: 185px"
+                                                            src="{% static 'extra-images/comment.png' %}" alt=""></a>
+                            </figure>
+                            <div class="widget-author-text">
+                                <h5><a href="404.html">{{ blog_details.user }}</a></h5>
+                                <p>{{ blog_details.user_description }}</p>
+                            </div>
+                        </div>
+                        <!--// Widget Author \\-->
+
+                        <!--// Widget Popular Post \\-->
+                        {% render_partial 'latest_posts' %}
+                        <!--// Widget Popular Post \\-->
+
+                        <!--// Widget Cetagories \\-->
+                        {% render_partial 'list_blog_categories' %}
+                        <!--// Widget Cetagories \\-->
+
+                        <!--// Widget Best Deals \\-->
+                        {% render_partial 'special_products' %}
+                        <!--// Widget Best Deals \\-->
+
+                        <!--// Widget Calendar Archives \\-->
+                        <div class="widget widget_cetagories">
+                            <h2 class="widget-heading">Calendar Archives</h2>
+                            <ul>
+                                <li><a href="404.html">December <span>(12)</span></a></li>
+                                <li><a href="404.html">January <span>(09)</span></a></li>
+                                <li><a href="404.html">March <span>(17)</span></a></li>
+                                <li><a href="404.html">May <span>(08)</span></a></li>
+                                <li><a href="404.html">August <span>(05)</span></a></li>
+                                <li><a href="404.html">September <span>(05)</span></a></li>
+                            </ul>
+                        </div>
+
+                        <!--// Widget Calendar Archives \\-->
+
+                        <!--// Widget Popular Tags \\-->
+                         {% render_partial 'list_tags' %}
+                        <!--// Widget Popular Tags \\-->
+
+                    </aside>
+                    <!--// Sidebar \\-->
+
+                    <div class="col-md-9">
+                        <figure class="hotmeal-blog-thumb"><img style="height: 430px; width: 800px"
+                                                                src="{{ blog_details.image.url }}" alt=""></figure>
+                        <div class="hotmeal-blog-heading">
+                            <h2>Floury Bakery is The Best Choice For Our Daily Healthy Meal</h2>
+                            <ul class="hotmeal-blog-option">
+                                <li>Date:
+                                    <time datetime="2008-02-14 20:00">{{ blog_details.time|date:"m F Y" }}</time>
+                                </li>
+                                <li>Posted By: <a href="404.html">{{ blog_details.user }}</a></li>
+                                <li>Comments: <a href="404.html">21</a></li>
+                            </ul>
+                        </div>
+                        <div class="hotmeal-rich-editor">
+                            <p>{{ blog_details.description|linebreaks }}</p>
+                            <blockquote>Sed vulputate elementum aliquam. Nunc vel efficitur ante. Ut gravida nulla id or
+                                nare sodales. Aenean aliquam mauris purus, eget mollis.
+                                <h6>~ Andrew martyn</h6>
+                                <span>Designer</span>
+                            </blockquote>
+                        </div>
+                        <div class="hotmeal-post-tags">
+                            <div class="hotmeal-social-tag">
+                                <a href="404.html">Pizza <span class="btn-shape"></span></a>
+                                <a href="404.html">Dessert <span class="btn-shape"></span></a>
+                                <a href="404.html">Burger <span class="btn-shape"></span></a>
+                            </div>
+                            <div class="hotmeal-blog-social">
+                                <ul>
+                                    <li><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+                                    <li><a href="https://twitter.com/login?lang=en" class="fa fa-twitter"></a></li>
+                                    <li><a href="https://www.pinterest.com/login/" class="fa fa-pinterest-p"></a></li>
+                                    <li><a href="https://plus.google.com/" class="fa fa-google-plus"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="hotmeal-prenxt-post">
+                            <ul>
+                                <li>
+                                    <div class="hotmeal-prev-post">
+                                        <a href="404-2.html"><i class="fa fa-angle-double-left"></i> Previous Post</a>
+                                        <h6><a href="404.html">Sed diam risus, auctor et dui vel, rhoncus finibus
+                                            lorem</a></h6>
+                                        <span class="btn-shape"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="hotmeal-next-post">
+                                        <a href="404-2.html"><i class="fa fa-angle-double-right"></i> Next Post</a>
+                                        <h6><a href="404.html">Orci varius natoque penatibus et magnis dis
+                                            parturient </a></h6>
+                                        <span class="btn-shape"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <h2 class="hotmeal-section-heading">Related Blog Post</h2>
+                        <div class="hotmeal-blog hotmeal-related-blog">
+                            <ul class="row">
+                                {% for blog_category in related_blogs %}
+                                    <li class="col-md-4">
+                                        <figure><a href="{{ blog_category.get_blog_detail_url }}"><img
+                                                style="width: 300px; height: 190px"
+                                                src="{{ blog_category.image.url }}"
+                                                alt=""><span class="hover-btn"><i
+                                                class="icon hotmeal-link"></i><small></small></span></a></figure>
+                                        <div class="hotmeal-related-blog-text">
+                                            <h5>
+                                                <a href="{{ blog_category.get_blog_detail_url }}">{{ blog_category.title|truncatechars:25 }}</a>
+                                            </h5>
+                                            <ul class="hotmeal-related-option">
+                                                <li><a href="404.html">Burger, </a></li>
+                                                <li><a href="404.html">Pizza, </a></li>
+                                                <li><a href="404.html">Dessert</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="comments-area">
+                            <!--// coments \\-->
+                            <h2 class="hotmeal-section-heading">Comments</h2>
+                            <!-- #comment-## -->
+                            <ul class="comment-list">
+                                {% for comment in comments %}
+                                    <li>
+                                    <div class="thumb-list">
+                                        <figure><img alt=""
+                                                     src="{% static 'extra-images/comment.png' %}">
+                                        </figure>
+                                        <div class="text-holder">
+                                            <h6>{{ comment.name }}</h6>
+                                            <time class="post-date" datetime="2008-02-14 20:00">
+                                                {{ comment.created|date:"Y-d-m P" }}
+                                            </time>
+                                            <br>
+                                            <p>{{ comment.body|linebreaks }}</p>
+                                            <br>
+                                            <a class="comment-reply-link" href="#">Reply</a>
+                                        </div>
+                                    </div>
+                                    <!-- .children -->
+                                {% endfor %}
+                                </li>
+                            </ul>
+                            <!--// coments \\-->
+
+                            <!--// comment-respond \\-->
+                            <div class="comment-respond">
+                                <h2 class="hotmeal-section-heading">Leave a Comment</h2>
+                                <form action="." method="post">
+                                    {% csrf_token %}
+                                    <p>
+                                        {{ comment_form.name }}
+                                    </p>
+                                    <p>
+                                        {{ comment_form.email }}
+                                    </p>
+                                    <p class="hotmeal-full-form">
+                                        {{ comment_form.body }}
+                                    </p>
+                                    <p><label class="submit"><input type="submit"
+                                                                    value="Submit Now"><span></span></label>
+                                    </p>
+                                </form>
+                            </div>
+                            <!--// comment-respond \\-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+    </div>
+    <!--// Main Content \\-->
+
+{% endblock %}

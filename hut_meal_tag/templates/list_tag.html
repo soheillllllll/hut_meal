@@ -1,0 +1,6 @@
+<div class="widget widget_tags">
+    <h2 class="widget-heading">Product Tags</h2>
+    {% for tag in list_tags %}
+        <a  href="{% url 'product:product_search'  %}?q={{ tag.title }}">{{ tag.title }}</a>
+    {% endfor %}
+</div>

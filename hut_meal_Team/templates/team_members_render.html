@@ -1,0 +1,28 @@
+<ul class="row">
+    {% for team in team %}
+        <li class="col-md-3">
+            <div class="hotmeal-team-grid-wrap">
+                <figure><a href="{{ team.get_team_detail_url }}"><img src="{{ team.image.url }}"
+                                                        alt=""></a>
+                    <figcaption>
+                        <ul class="hotmeal-team-social">
+                            <li><a href="https://en-gb.facebook.com/login/"><i
+                                    class="fa fa-facebook"></i><span
+                                    class="btn-shape"></span></a></li>
+                            <li><a href="https://twitter.com/login"><i
+                                    class="fa fa-twitter"></i><span
+                                    class="btn-shape"></span></a></li>
+                            <li><a href="https://www.linkedin.com/uas/login"><i
+                                    class="fa fa-linkedin"></i><span
+                                    class="btn-shape"></span></a></li>
+                        </ul>
+                    </figcaption>
+                </figure>
+                <div class="hotmeal-team-grid-text">
+                    <h5><a href="{{ team.get_team_detail_url }}">{{ team.title }}</a></h5>
+                    <span>{{ team.degree }}</span>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+</ul>

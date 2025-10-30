@@ -1,0 +1,154 @@
+{% extends 'base/base.html' %}
+{% load render_partial %}
+{% block contents %}
+    {% load static %}
+
+    <!--// SubHeader \\-->
+    <div class="hotmeal-subheader">
+        <span class="hotmeal-subheader-transparent"></span>
+        <div class="hotmeal-subheader-text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>Blogs</span>
+                        {% block page_title %}{% endblock %}
+                        <p>Sed vulputate elementum aliquam. Nunc vel efficitur ante. Ut gravida nulla id ornare
+                            sodales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hotmeal-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="index-2.html">Homepage</a></li>
+                            <li class="active">Blog Large W/L/Sidebar</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader \\-->
+
+    <!--// Main Content \\-->
+    <div class="hotmeal-main-content">
+
+        <!--// Main Section \\-->
+        <div class="hotmeal-main-section">
+            <div class="container">
+                <div class="row">
+
+                    <!--// Sidebar \\-->
+                    <aside class="col-md-3">
+
+                        <!--// Widget Search \\-->
+                        <div class="widget widget_search">
+                            <form id="mob-search" name="search" action="{% url 'blog:search_blogs' %}" method="get">
+                                <input name="q" placeholder="Search ..." value="{{ request.GET.q }}"
+                                       onblur="if(this.value == '') { this.value ='Search Now'; }"
+                                       onfocus="if(this.value =='Search Now') { this.value = ''; }" tabindex="0"
+                                       type="text">
+                                <label><input type="submit" value=""></label>
+                            </form>
+                        </div>
+                        <!--// Widget Search \\-->
+
+                        <!--// Widget Author \\-->
+                        <div class="widget widget_author">
+                            <figure><a href="404.html"><img src="{% static 'extra-images/widget-author-img1.jpg' %}"
+                                                            alt=""></a>
+                            </figure>
+                            <div class="widget-author-text">
+                                <h5><a href="404.html">About Author</a></h5>
+                                <p>Fusce pulvinar tortor viverra al iquam semper. Cras in sapien ul trices, molestie
+                                    sapien acn, so dales leo viverra.</p>
+                            </div>
+                        </div>
+                        <!--// Widget Author \\-->
+
+                        <!--// Widget Popular Post \\-->
+                        {% render_partial 'latest_posts' %}
+                        <!--// Widget Popular Post \\-->
+
+                        <!--// Widget Cetagories \\-->
+                        {% render_partial 'list_blog_categories' %}
+                        <!--// Widget Cetagories \\-->
+
+                        <!--// Widget Best Deals \\-->
+                        {% render_partial 'special_products' %}
+                        <!--// Widget Best Deals \\-->
+
+                        <!--// Widget Calendar Archives \\-->
+                        <div class="widget widget_cetagories">
+                            <h2 class="widget-heading">Calendar Archives</h2>
+                            <ul>
+                                <li><a href="404.html">December <span>(12)</span></a></li>
+                                <li><a href="404.html">January <span>(09)</span></a></li>
+                                <li><a href="404.html">March <span>(17)</span></a></li>
+                                <li><a href="404.html">May <span>(08)</span></a></li>
+                                <li><a href="404.html">August <span>(05)</span></a></li>
+                                <li><a href="404.html">September <span>(05)</span></a></li>
+                            </ul>
+                        </div>
+                        <!--// Widget Calendar Archives \\-->
+
+                        <!--// Widget Popular Tags \\-->
+                        {% render_partial 'list_tags' %}
+
+                        <!--// Widget Popular Tags \\-->
+
+                    </aside>
+                    <!--// Sidebar \\-->
+
+                    <div class="col-md-9">
+                        <div class="hotmeal-blog hotmeal-blog-large">
+                            <ul class="row">
+                                {% block blog_item %}{% endblock %}
+                            </ul>
+                        </div>
+                        <!--// Pagination \\-->
+                        <div class="hotmeal-pagination">
+                            <ul class="page-numbers">
+                                {% if page_obj.has_previous %}
+                                    <li><a class="previous page-numbers"
+                                           href="?page={{ page_obj.previous_page_number }}"><span
+                                            aria-label="Next"><i
+                                            class="fa fa-angle-left"></i></span> <small
+                                            class="btn-shape"></small></a>
+                                    </li>
+                                {% endif %}
+                                {% for page in paginator.page_range %}
+                                    {% if page == page_obj.number %}
+                                        <li class="active"><a class="page-numbers"
+                                                              href="?page={{ page }}">{{ page }}</a></li>
+                                    {% else %}
+                                        <li><a href="?page={{ page }}">{{ page }} <small
+                                                class="btn-shape"></small></a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                    <li><a class="next page-numbers"
+                                           href="?page={{ page_obj.next_page_number }}"><span
+                                            aria-label="Next"><i
+                                            class="fa fa-angle-right"></i></span> <small
+                                            class="btn-shape"></small></a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <!--// Pagination \\-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+    </div>
+    <!--// Main Content \\-->
+
+{% endblock %}
