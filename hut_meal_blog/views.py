@@ -28,7 +28,6 @@ def blog_details(request, *args, **kwargs):
     blog_id = kwargs['blog_id']
     blog_details = Blog.objects.get_blog_by_id(blog_id)
     related_blogs = Blog.objects.get_queryset().filter(categories__blog=blog_details).distinct()[:3]
-    # tag = blog_details.tag_set.all()
     comments = blog_details.comment_blogs.filter(active=True)
     new_comment = None
     if request.method == 'POST':

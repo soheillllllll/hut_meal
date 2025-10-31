@@ -110,8 +110,8 @@
                                 <li>Date:
                                     <time datetime="2008-02-14 20:00">{{ blog_details.time|date:"m F Y" }}</time>
                                 </li>
-                                <li>Posted By: <a href="404.html">{{ blog_details.user }}</a></li>
-                                <li>Comments: <a href="404.html">21</a></li>
+                                <li>Posted By: {{ blog_details.user }}</li>
+                                <li><a href="#Comments">Comments: {{ comments.count }}</a></li>
                             </ul>
                         </div>
                         <div class="hotmeal-rich-editor">
@@ -183,7 +183,7 @@
                         </div>
                         <div class="comments-area">
                             <!--// coments \\-->
-                            <h2 class="hotmeal-section-heading">Comments</h2>
+                            <h2 id="Comments" class="hotmeal-section-heading">Comments</h2>
                             <!-- #comment-## -->
                             <ul class="comment-list">
                                 {% for comment in comments %}

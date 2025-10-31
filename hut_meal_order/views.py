@@ -16,56 +16,45 @@ from hut_meal_reservation.models import Reservation, Table
 
 @login_required(login_url='/login')
 def cart_page(request):
-    print('total')
     context = {
         'order': None,
         'details': None,
         'total_price2': 0
     }
     open_order = Order.objects.filter(user_id=request.user.id, status='pending').first()
-    print(open_order)
     if open_order is None:
         open_order = Order.objects.create(user_id=request.user.id, paid=False)
-
-    print(open_order)
     order_detail = open_order.orderdetail_set.filter(order_id=open_order.id)
-
     if open_order is not None:
         context['order'] = open_order
         context['details'] = order_detail
         context['total_price2'] = open_order.total_price2()
-
     return render(request, 'cart.html', context)
 
 
 @login_required(login_url='/login')
 def add_new_item_order(request, *args, **kwargs):
-    count = 1
-    print(count)
+    count, size =1, "average"
     new_order_form = UserNewOrderForm(request.POST or None)
     if new_order_form.is_valid():
         count = new_order_form.cleaned_data.get('count')
-    print(count)
+        size = new_order_form.cleaned_data.get('size')
     product_id = kwargs['product_id']
     order = Order.objects.filter(user_id=request.user.id, status="pending").first()
     if order is None:
         order = Order.objects.create(user_id=request.user.id, paid=False)
-
     product = Product.objects.get_product_by_id(product_id)
-
     order_detail = order.orderdetail_set.filter(product_id=product_id).first()
     if order_detail is None:
         count = count
-        order.orderdetail_set.create(product_id=product.id, count=count, price=product.price2())
+        order.orderdetail_set.create(product_id=product.id, count=count,size=size, price=product.price2())
         order.price = order.total_price2()
         order.save()
-
     else:
         order_detail.count += count
         order_detail.save()
         order.price = order.total_price2()
         order.save()
-
     return redirect('/cart-page')
 
 

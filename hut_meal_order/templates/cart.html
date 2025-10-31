@@ -35,7 +35,6 @@
 
     <!--// Main Content \\-->
     <div class="hotmeal-main-content">
-
         <!--// Main Section \\-->
         <div class="hotmeal-main-section">
             <div class="container">
@@ -43,16 +42,6 @@
 
                     <div class="col-md-12">
                         <div class="hotmeal-gallery-filterable">
-                            {#                            <ul class="filters-button-group">#}
-                            {#                                <li><a data-filter="*" class="is-checked">All</a></li>#}
-                            {#                                <li><a data-filter="*" class="is-checked">All</a></li>#}
-                            {#                                <li><a data-filter="*" class="is-checked">All</a></li>#}
-                            {#                                <li><a data-filter="*" class="is-checked">All</a></li>#}
-                            {#                                <li><a data-filter="*" class="is-checked">All</a></li>#}
-                            {#                                <li><a data-filter="*" class="is-checked">All</a></li>#}
-                            {#                            </ul>#}
-
-
                             <table class="shop-cart-table">
                                 <thead>
                                 <tr>
@@ -112,6 +101,21 @@
 
                         </div>
                     </div>
+                    <div class="hotmeal-menu hotmeal-menu-list hotmeal-menu-filter hotmeal-breakfast-manu">
+                        <ul class="row">
+                            <li class="col-md-6 element-item desserts">
+                                <div class="hotmeal-menu-list-text">
+                                    <span>Total of your shopping cart </span>
+                                    <p style="color: #761c19">{{ total_price2  }} $</p>
+                                </div>
+                            </li>
+                            <li class="col-md-6 element-item drinks">
+                                <div class="hotmeal-menu-list-text">
+                                    <h5 ><a style="color: #05730b" href="{% url 'order:request' order.id "b" %}">-->>payment</a></h5>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
                 </div>
             </div>
@@ -120,8 +124,5 @@
 
     </div>
     <!--// Main Content \\-->
-    <div style="margin-top: 2000px;width: 300px;height: 400px; background-color: #4ac1f7">
-        <a href="{% url 'order:request' order.id "b" %}">send_request</a>
-    </div>
 
 {% endblock %}

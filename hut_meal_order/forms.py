@@ -8,6 +8,9 @@ class UserNewOrderForm(forms.Form):
         widget= forms.NumberInput(attrs={"class":"input-text qty", "id":"qty", "name": "qty", "type": "text", "maxlength":"12", "value": "1"}),
         initial = 1
     )
+    size = forms.CharField(
+        widget= forms.TextInput(attrs={"type":"text"})
+    )
 
 
 

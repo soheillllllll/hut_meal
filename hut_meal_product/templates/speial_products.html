@@ -3,11 +3,11 @@
     <ul>
         {% for product in products %}
         <li>
-            <figure><a href="menu.html"><img
+            <figure><a href="{{ product.get_product_detail_url }}"><img
                     src="{{ product.image.url }}" alt=""></a>
             </figure>
             <div class="widget-deals-text">
-                <h6><a href="menu.html">{{ product.title }}</a></h6>
+                <h6><a href="{{ product.get_product_detail_url }}">{{ product.title }}</a></h6>
                 <span>{{ product.price2 }}</span>
             </div>
         </li>

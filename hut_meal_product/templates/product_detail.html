@@ -86,42 +86,46 @@
                                                       data-toggle="tooltip" title="Chocolate"></span>
                                             {% endfor %}
                                         </div>
-                                        <div class="hotmeal-product-option">
-                                            <ul>
-                                                <li>
-                                                    <label>Quantity:</label>
-                                                    <input value="01" min="01" max="10" type="number">
-                                                </li>
-                                                <li>
-                                                    <label>Size:</label>
-                                                    <div class="hotmeal-search-select">
-                                                        <select>
-                                                            {% for product_size in size %}
-                                                                <option value="Select Size">{{ product_size.title }}</option>
-                                                            {% endfor %}
-                                                        </select>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="hotmeal-product-tags">
-                                            <ul>
-                                                <li>
-                                                    <h6>Product Code:</h6>
-                                                    <span> CA78963</span>
-                                                </li>
-                                                <li>
-                                                    <h6>Tags:</h6>
-                                                    <a href="404.html">ebook, </a>
-                                                    <a href="404.html"> business, </a>
-                                                    <a href="404.html">author</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <a href="404.html" class="hotmeal-cart-btn">Add To Cart <i
-                                                class="fa fa-angle-right"></i><span class="btn-shape"></span></a>
-                                        <a href="404.html" class="hotmeal-cart-btn">Add To Wishlist <i
-                                                class="fa fa-angle-right"></i><span class="btn-shape"></span></a>
+                                        <form method="post" action="{% url "order:add_new_item_order" product.id %}">
+                                        {% csrf_token %}
+                                            <div class="hotmeal-product-option">
+                                                <ul>
+                                                    <li>
+                                                        <label>Quantity:</label>
+                                                        <input name="count" value="01" min="01" max="100" type="number">
+                                                    </li>
+                                                    <li>
+                                                        <label>Size:</label>
+                                                        <div class="hotmeal-search-select">
+                                                            <select name="size">
+                                                                {% for product_size in size %}
+                                                                    <option value="{{ product_size.title }}">{{ product_size.title }}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="hotmeal-product-tags">
+                                                <ul>
+                                                    <li>
+                                                        <h6>Product Code:</h6>
+                                                        <span> CA78963</span>
+                                                    </li>
+                                                    <li>
+                                                        <h6>Tags:</h6>
+                                                        <a href="404.html">ebook, </a>
+                                                        <a href="404.html"> business, </a>
+                                                        <a href="404.html">author</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <button type="submit"  class="hotmeal-cart-btn">Add To Cart <i
+                                                    class="fa fa-angle-right"></i><span class="btn-shape"></span></button>
+
+                                        <button type="submit" class="hotmeal-cart-btn">Add To Wishlist <i
+                                                class="fa fa-angle-right"></i><span class="btn-shape"></span></button>
+                                    </form>
                                         <div class="hotmeal-shop-social">
                                             <ul>
                                                 <li><h6>Share This Product:</h6></li>

@@ -44,6 +44,7 @@ class OrderDetail(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     count = models.IntegerField(verbose_name='i')
+    size = models.CharField()
     price = models.IntegerField()
 
     class Meta:
